@@ -1,0 +1,3 @@
+*.txt linguist-detectable=false
+*.rtf linguist-detectable=false
+*.doc linguist-detectable=false
