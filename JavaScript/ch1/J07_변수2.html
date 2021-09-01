@@ -1,0 +1,37 @@
+<!-- 
+	변수선언
+		. 자바스크립트에서는 굳이 선언하지 않아도 된다.
+		. 필요한 곳에서 변수를 사용하면 자동으로 생성되고 자료형도 결정된다.
+		. 만약, 변수를 명시적으로 선언하고 사용하게 되면 자료형을 구분하지 않기 때문에
+				var 예약어를 사용해서 선언해준다.
+
+	지역변수와 전역변수
+		. 전역변수 : 함수 밖에서 선언되거나, 함수내에서 var없이 선언된 변수
+		. 지역변수 : 함수 안에서 var키워드로 선언, 함수내에서만 사용가능
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<h3>지역변수와 전역변수</h3>
+	<hr>
+	
+	<script type="text/javascript">
+		var x = 100;
+		function f() {
+			var x = 1;
+			document.write("지역변수 : "+x);
+			document.write("<br>");
+			document.write("전역변수 : "+this.x);
+		}
+		f();
+	
+	</script>
+</body>
+</html>

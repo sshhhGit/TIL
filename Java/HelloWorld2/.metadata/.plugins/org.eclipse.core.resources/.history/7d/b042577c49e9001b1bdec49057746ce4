@@ -1,0 +1,22 @@
+package 제네릭1;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class HashMap1 {
+	public static void main(String[]args) {
+		
+		HashMap<Integer, String> hm = new HashMap<>();
+		
+		hm.put(1,"우리나라");
+		hm.put(2,"좋은나라");
+		hm.put(3,"대한민국");
+		hm.put(4,"우리나라");
+		hm.put(4,"대한민국");
+		
+		System.out.println(hm.get(1));
+		System.out.println(hm.get(4));
+		
+		
+	}
+}

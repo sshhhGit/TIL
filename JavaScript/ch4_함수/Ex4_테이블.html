@@ -1,0 +1,38 @@
+<!-- 
+		(스크립트로 테이블 만들어보기) -- >for문으로 ??
+		n 	0  1  2  3  4    5   6   7   8   9
+		n2  0  1  4  9  16  25  36  49  64  81
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+	
+		table {border-collapse: collapse}
+		td {background: aqua;}
+	
+	</style>
+	<script type="text/javascript">
+	
+	var n = parseInt(prompt());
+	
+	for(var i=1;i<=9;i++){
+		var x = n*i;
+		document.write("<table border=1 width=200 height=200");
+		document.write("<th>"+i+"</th>");
+		document.write("<tr><td>"+n+"</td><td>"+x+"</td>");
+		document.write("<td>"+x+"</td></tr>");
+		
+		
+	}
+	
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>

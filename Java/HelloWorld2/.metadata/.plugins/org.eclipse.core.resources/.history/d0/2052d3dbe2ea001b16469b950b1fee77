@@ -1,0 +1,14 @@
+package EX;
+
+
+
+public class IO7_문자단위스트림 {
+	public static void main(String [] args) {
+		
+		try {
+			FileWrite fout = new FileWrite("C:\\Windows\\system.ini");
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

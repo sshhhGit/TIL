@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	
+		function gugudan(n) {
+			
+			var m = parseInt(n);
+			
+			if(inNaN(m) || m<1 || m>9) {
+				alert("잘못입력");
+				return;
+			}
+			for(var i=1;i<=9;i++){
+				document.write(m+"X"+i+"="+(m*i)+"<br>");
+			}
+		}
+	</script>
+</head>
+<body>
+	<h3>구구단 출력 함수 만들기</h3>
+	<hr>
+	<script type="text/javascript">
+	
+		var dan = prompt("몇단");
+		
+		gugudan(dan);
+	
+	</script>
+</body>
+</html>

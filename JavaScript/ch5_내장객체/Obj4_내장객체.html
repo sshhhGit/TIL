@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        table{
+            width: 300px; height: 300px;
+            background-color: aliceblue;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        #h{
+            background-color: blue;
+            color: white;
+        }
+        caption {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3></h3>
+    <script>
+        var studentArr = new Array(['강민성', '컴공', 88, 76],
+                                   ['김정아', '수학', 70, 83],
+                                   ['신은수', '행정', 92, 95],
+                                   ['이은주', '물리', 85, 92],
+                                   ['조우진', '건축', 97, 88],
+                                   );
+        var student = new Array(Array('강민성', '컴공', 88, 76),
+                                Array('강민성', '컴공', 88, 76),
+                                Array('강민성', '컴공', 88, 76),
+                                Array('이은주', '물리', 85, 92),
+                                Array('조우진', '건축', 97, 88),
+                                );
+
+        document.write("<table border=1>");
+            document.write("<caption>성적테이블</caption>");
+            document.write("<tr id='h'><td>이름</td><td>전공</td><td>중간</td><hr>");
+                for(i=0;i<student.length;i++){
+                    document.write("<tr>")
+                        for(j=0;j<student[i].length;j++){
+                    document.write("<td>"+student[i][j]+"</td>");
+                        }
+                }
+    </script>
+</body>
+</html>

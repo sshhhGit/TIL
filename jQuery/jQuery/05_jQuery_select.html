@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_jQuery_select.html</title>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	//#target id를 선택하여
+	//글씨를 blue색으로 하고
+	//배경색을 yellow로 설정하시오 .
+	$('#target')
+	.css('color', 'blue')
+	.css('background-color','yellow')
+	.css('font-size','30pt');
+	
+	//.a클래스를 선택하여
+	//border를 검정실선
+	//글씨체를 궁서체
+	//글씨색을 green색으로
+	$('.a')
+	.css('border', '2px solid black')
+	.css('font-family','궁서체')
+	.css('color','green');
+	
+});//function()-end
+</script>
+</head>
+<body>
+  <h1>h1 tag NO1</h1>
+  <h1 id="target">h1 tag NO2</h1>
+  <h1 class="a">h1 tag NO3</h1>
+</body>
+</html>

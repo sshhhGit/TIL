@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03_jQuery_tag_make.html</title>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("<div>hello-안녕하세요</div>") //div태그 만들기
+	.appendTo(document.body)
+	.hide()
+	.css('background-color', 'yellow')/*배경색*/
+	.css('font-family', '궁서체')/*글꼴설정*/
+	.css('font-size', '20pt')/*폰트설정*/
+	.css('color','blue')/*글꼴색*/
+	.css('width','300px')/*div 넓이*/
+	.css('height','40px')/*div 높이*/
+	.css('display', 'block')/*display를 block으로*/
+	.css('border', '2px solid black')/*border는 선그리기*/
+	.show();
+	
+	/*이벤트 처리, 버튼추가*/
+	$('#btn').on('click', function(){
+		$('<button>button</button>')
+		.addClass('new')
+		.attr('id', 'id')
+		.appendTo('.container');
+	});
+	
+	/*버튼 삭제*/
+	$('.container').on('click', 'button.new', function(){
+		$(this).remove();/*현재 클릭한 객체 삭제*/
+	});
+});
+</script>
+</head>
+<body>
+  <button id="btn">클릭하면 생성됩니다.</button>
+  <div class="container"></div>
+  
+  <input type="hidden" name="num" value="7887">
+</body>
+</html>

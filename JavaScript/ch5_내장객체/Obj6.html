@@ -1,0 +1,89 @@
+<!--
+    Date 객체
+        ; 날짜와 시간을 관리해주는 객체
+
+        . 생성
+               - 현재의 날짜와 시간
+                    var now = new Date();
+
+               - 내가 지정해서 생성하는 객체
+                    var now = new Date(년, 월, 일, 시, 분, 초);
+
+        . 메소드
+               getFullYear() : 년도
+               getMonth()    : 월
+               getDate()     : 일(1~31)
+               getDay()      : 요일
+               getHours()    : 시간(0~23)
+               getMinutes() : 분(0~59)
+               getSeconds()  : 초(0~59)
+               getMilliseconds() : 밀리초(0~999)
+               getTime()     : 1970.1.1 기준부터 경과한 시간(밀리초)
+
+               toUTCString() : UTC 세계협정시
+               toLocaleString() : 지역날짜시간
+               toLocaleTimeString() : 지역시간
+
+              setFullYear(year)
+              setMonth(nonth)
+              setDate(date)
+              setHour(hour)
+              setMinutes(minute)
+              setMilliseconds(ms)
+              setTime(t)
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+      //객체생성1 - 현재
+      var date = new Date();
+
+      document.write("<p><strong>현재 날짜/시간: ");
+      document.write("["+date.getFullYear()+"년");
+      document.write((date.getMonth()+1)+"월");
+      document.write(date.getDate()+"일");
+
+      switch(date.getDay()) {
+      case 0: document.write("&nbsp;일요일&nbsp;".fontsize(7).fontcolor("red"));
+        break;
+        case 1: document.write("&nbsp;월요일&nbsp;".fontsize(7).fontcolor("Orange"));
+          break;
+          case 2: document.write("&nbsp;화요일&nbsp;".fontsize(7).fontcolor("yellow"));
+            break;
+            case 3: document.write("&nbsp;수요일&nbsp;".fontsize(7).fontcolor("green"));
+              break;
+              case 4: document.write("&nbsp;목요일&nbsp;".fontsize(7).fontcolor("blue"));
+                break;
+                case 5: document.write("&nbsp;금요일&nbsp;".fontsize(7).fontcolor("navy"));
+                  break;
+                  case 6: document.write("&nbsp;토요일&nbsp;".fontsize(7).fontcolor("purple"));
+                    break;
+      }
+
+      if(date.getHours()>12) {
+        document.write("오후");
+        document.write(((date.getHours()-12)+"시").fontsize(6).fontcolor("red"));
+      }else{
+        document.write("오전");
+        document.write((date.getHours()+"시").fontsize(6).fontcolor("red"));
+      }
+
+      document.write(date.getMinutes()+"분");
+      document.write(date.getSeconds()+"초");
+
+      document.write("]</<strong></p>")
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

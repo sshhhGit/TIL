@@ -1,0 +1,41 @@
+<!-- 
+	자바스크립트에서 더하기 연산은 
+		- 숫자를 더할떄도 사용
+		- 문자를 결합할 때도 사용
+	더하기외의 연산인 문자로 된 숫자는 자동 연산이 가능하다.
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	document.write("<h3>자바스크립트의 자동 형 변환</h3><hr>");
+	
+	document.write('10'+'5'+'<br>'); // 문자+문자 = 문자결합
+	document.write('10'+5+'<br>');   //문자+숫자 = 문자결합 
+	document.write(10+5+'<br>');     //숫자+숫자 = 연산
+	document.write('가'+10+5+"<br>");// 결합
+	document.write(10+3+true+"<br>");// 연산
+	
+	//그외연산
+	document.write('10'-'5'+"<br>"); //문자 - 문자 = 연산
+	document.write('10'-5+"<br>");	 //문자 - 숫자 = 연산
+	document.write('10'*'5'+"<br>"); //문자 * 문자 = 연산
+	document.write('10'/'5'+"<br>"); //문자 / 문자 = 연산
+	document.write('10'%'3'+"<br>"); //문자 % 문자 = 연산
+	document.write('10'*false +"<br>"); //문자 * boolean = 연산
+	
+	a = prompt("사칙연산 a값을 입력해 주세요>> ","numbering");
+	b = parseInt(prompt("사칙연산 b값을 입력해 주세요>> ","numbering"));
+	c = new Number(prompt("사칙연산 c값을 입력해 주세요>> ","numbering"));
+	
+	document.write(a+b+"<br>");
+	document.write(b+c+"<br>");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

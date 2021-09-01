@@ -1,0 +1,67 @@
+<!--
+	변수선언
+		. var로 선언함을 권장한다.
+		. 함수(function)내에서 var로 선언한 변수만 지역변수인다.(그 외는 모두 전역)
+		
+	변수호스팅
+		. 변수 선언들(그리고 일반적인 선언도 포함)은 어느 코드가 실행되기 전에 처리하기 떄문에
+		. 코드 안에서 어디서든 변수 선언은 최상위에 선언한 것과 동등합니다.
+		. 즉, 변수가 선언되기전에 사용될 수 있다는 것을 의미합니다.
+		. 변수 선언이 함수 또는 전역 코드의 상단으로 위치로 이동하는것과 동일한 행동을
+		  호스팅이라고 한다.
+		
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var a;
+	var a = 10;
+	var a = 20; //되도록 변수선언은 var을 붙여 선언
+	/* int a = 8; var을 붙여놓으면 변수선언을 중복해서 하게 될 경우에 오류가 발생
+				  되어 문제를 발견할 수 있다*/ 
+				  
+	var c = 100;
+	var d = 600;
+	var e = 500;
+	var sum = d+e
+	/* var f = 500; */
+	
+	function f() {
+		var c = 500;
+		m = 1500;
+		
+		document.write("a : "+a+"<br>");
+		document.write("c : "+c+"<br>"); //500 지역변수
+		document.write("c : "+this.c+"<br>"); //500 전역변수
+		document.write("d : "+d+"<br>");
+		document.write("sum : "+sum+"<br>");
+		/* document.write("f : "+f+"<br>"); */
+		document.write("g : "+g+"<br>")
+		document.write("t : "+t+"<br>")
+		document.write("k : "+k+"<br>")
+	}
+	
+	var g = 500;
+	t="var로 선언되지 않은 변수";
+	
+	f();
+
+
+</script>
+</head>
+<body>
+<script type="text/javascript">
+
+	var k = 800;
+	document.write(a+"<br>");
+	document.write(d+"<br>");
+	document.write("c : "+c+"<br>"); //전역번수
+	document.write("k : "+k+"<br>"); //전역번수
+
+</script>
+</body>
+</html>

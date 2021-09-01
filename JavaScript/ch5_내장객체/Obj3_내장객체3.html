@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>배열의 크기조절</h3>
+	<hr>
+	<script type="text/javascript">
+	
+		var student = [88,92,76];
+		document.write("배열 Student크기 : "+student.length+"<br>");
+		for(i=0;i<student.length;i++){
+			document.write("student["+i+"]")
+			document.write(student[i]+"=<br>")
+		}
+		document.write("<hr>")
+		
+		student[6] = 84;
+		student[4] = "수요일";
+		document.write("배열 Student크기 : "+student.length+"<br>");
+		
+		for(i=0;i<student.length;i++){
+			document.write("student["+i+"]")
+			document.write(student[i]+"=<br>")
+		}
+		document.write("<hr>")
+		
+		student.length=2;
+		for(i=0;i<student.length;i++){
+			document.write("student["+i+"]")
+			document.write(student[i]+"=<br>")
+		}
+	</script>
+
+</body>
+</html>

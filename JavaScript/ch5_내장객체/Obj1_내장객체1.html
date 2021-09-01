@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	
+		document.write("<h3>Array객체의 생성과 length속성</h3><hr>");
+		
+		//1.배열생성
+		var arr = new Array(3);
+		
+		//2.초기화
+		arr[0] = 10;
+		arr[1] = "Javascript";
+		arr[2] = "Programming";
+	
+		document.write("<br>배열의 길이는"+arr.length+"이고,<br>");
+		document.write("배열의 요소는.......<br>");
+		
+		for(i=0;i<arr.length;i++){
+			document.write("&nbsp;&nbsp;&nbsp; arr["+i+"]="+arr[i]+"<br>");
+		}
+		document.write("입니다.")
+		
+		
+		
+		//배열 2 생성
+		var strArr = new Array("관악산", "설악산", "지리산", "한라산", "백두산");
+		for(j=0;j<strArr.length;j++){
+			document.write("&nbsp;&nbsp;&nbsp; arr["+j+"]="+strArr[j]+"<br>");
+		}
+		document.write("입니다.")		
+		
+		
+		//함수
+		function adder(a, b) {
+			var sum = a+b;
+			return sum;
+		}
+		//배열 3 생성
+		var mixArr = ["HTML/CSS", 100, 3.14, new Date(), adder(4,5)];
+		for(q=0;q<mixArr.length;q++){
+			document.write(mixArr[q]);
+		}
+		
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

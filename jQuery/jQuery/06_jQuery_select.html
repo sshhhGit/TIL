@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//input[type=text]를 선택하여
+	//값을 "Hello 안녕"
+	//글씨색 blue로 하세요
+	$('input[type=text]')
+	.val('Hello 안녕')
+	.css('color','blue');
+	
+	//password의 border를 검정색
+	//배경색을 yellow색으로
+	//border를 1px 실선 red색으로
+	$('input[type=password]')
+	.css('background-color','yellow')
+	.css('border','1px solid red');
+	
+	//%('#ch')를 선택하여
+	//배경색을 cyan으로 해주세요
+	//border는 1px 검정 실선으로
+/* 	$('#ch')
+	.css('background-color','cyan')
+	.css('border','1px solid black') */
+	
+/* 	$('#ra')
+	.css('background-color','blue')
+	.css('color','white')
+	.css('font-size', '20pt') */
+	
+});//function()-end
+</script>
+<style type="text/css">
+#ch{
+background-color: cyan;
+border: 1px solid black;
+}
+#ra{
+background-color: blue;
+color: white;
+font-size: 20pt;
+}
+</style>
+</head>
+<body>
+  ID : <input type="text"><br>
+    암호 : <input type="password"><br>
+    라디오 : <input id="ra" type="radio">radio<br>
+    체크박스 : <input id="ch" type="checkbox">checkbox<br>
+    파일 : <input type="file"><br>
+</body>
+</html>

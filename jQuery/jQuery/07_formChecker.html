@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>07_formChecker.html</title>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  
+  <script>
+	function openDaumPostcode(){
+		 
+		new daum.Postcode({
+			oncomplete:function(data){
+				document.getElementById('zipcode').value=data.zonecode;
+				document.getElementById('addr').value=data.address;
+	 		}
+			
+		}).open();
+	}//openDaumPostcode()---
+  </script>
+
+<script type="text/javascript">
+function check() {
+	//데이터 유효성 체크 jQuery 사용
+	if($('#id').val()==''){
+		alert('id를 입력하세요');
+		$('#id').focus()
+		return false;
+	}
+	
+	if($('#pw').val()==''){
+		alert('암호를 입력하세요');
+		$('#pw').val().focus();
+		return false;
+	}
+	if($('#pw2').val()==''){
+		alert('암호확인을 입력하세요');
+		$('#pw2').val().focus();
+		return false;
+	}
+	if($('#pw').val() != $('#pw2').val()){
+		alert('암호와 암호확인이 일치하지 않습니다.');
+		$('#pw').val('').focus();
+		$('#pw2').val('');
+		return false;
+	}
+	if($('#name').val()==''){
+		alert('이름을 입력하세요');
+		$('#name').focus();
+		return false;
+	}
+	if($('#tel2').val()=='' || $('#tel3').val()==''){
+		alert('전화번호를 올바르게 입력하세요');
+		$('#tle2').focus();
+		return false;
+	}
+	if($('#email').val()==''){
+		alert('이메일을 입력하세요');
+		$('#email').focus();
+		return false;
+	}
+	//document.inForm.submit();
+	alert("유효성 체크 완료");
+	
+	//val() : 값을 얻을 때 사용
+	//val('안녕') : 값을 넣을 때
+	//val('') : 값을 지울 때
+}
+
+function idCheck() {
+	//id 중복체크, Ajax 사용
+	//alert("aaa");
+	if($('#id').val()==''){
+		alert('id를 입력하세요');
+		$('#id').focus();
+	}else{
+		//id를 입력했을경우, id중복체크
+		$.ajax({
+			type:'POST',					/*method방식은 POST*/
+			url:'confirmID.jsp',			/*서버주소*/
+			data:'id='+$('#id').val(),		/*서버로 넘길 파라미터*/
+			dataType:'JSON',				/*서버가 넘겨줄 type*/
+			success:function(data){			//결과를 받아서 처리
+				//alert(data.check);
+				if(data.check==1){
+					alert('사용중인 id입니다');
+					$('#id').val('').focus();
+					return;
+				}else{
+					alert('사용가능한 id입니다');
+					$('#pw').focus();
+				}
+			}//success-end
+		});//ajax()-end
+	}//else-end
+}//funcution-end
+</script>
+</head>
+<body>
+  <form name="inForm" action="">
+    <table>
+      <tr>
+        <td colspan="2" align="center">
+           <font size="5">회원가입</font>
+        </td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>
+          <input type="text" name="id" id="id" size="20" required="required" placeholder="ID 입력">
+          <input type="button" value="ID중복체크" onclick="idCheck()">
+        </td>
+      </tr>
+      <tr>
+        <td>암호</td>
+        <td><input type="password" name="pw" id="pw" size="10" required="required"></td>
+      </tr>
+      <tr>
+        <td>암호확인</td>
+        <td><input type="password" name="pw2" id="pw2" size="10" required="required"></td>
+      </tr>
+      <tr>
+        <td>이름</td>
+        <td><input type="text" name="name" id="name" size="30" required="required"></td>
+      </tr>
+      <tr>
+        <td>전화</td>
+        <td>
+          <select name="tel" id="tel">
+            <option value="">선택하세요</option>
+            <option value="010">010</option>
+            <option value="017">017</option>
+            <option value="018">018</option>
+          </select>
+          -
+          <input type="text" name="tel2" id="tel2" size="4">
+          -
+          <input type="text" name="tel3" id="tel3" size="4">
+		</td>
+      </tr>
+      
+      <tr>
+        <td>Email</td>
+        <td>
+          <input type="text" name="eamil" id="email" size="15">
+          @
+          <select name="eamil2" id="emaul2">
+            <option value="">선택하세요</option>
+            <option value="@naver.com">naver.com</option>
+            <option value="@daum.net">daum.net</option>
+            <option value="@nate.com">nate.com</option>
+          </select>
+          </td>
+      </tr>
+      <tr>
+        <td>우편번호</td>
+        <td>
+          <input type="text" name="zipcode" id="zipcode" size="7" readonly="readonly">
+          <input type="button" value="주소찾기" onclick="openDaumPostcode()">
+        </td>
+      </tr>
+      
+      <tr>
+        <td>주소</td>
+          <td>
+            <input type="text" name="addr" id="addr" size="50" readonly="readonly">
+            <br>
+            <input type="text" name="addr2" id="addr2" size="20">
+          </td>
+      </tr>
+      
+      <tr>
+        <td colspan="2" align="center">
+          <input type="button" value="회원가입 " onclick="check()">
+          <input type="reset">
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

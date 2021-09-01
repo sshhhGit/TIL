@@ -1,0 +1,36 @@
+<!--  
+	자바스크립트 코드위치
+			. Script태그내에 작성 : <script></script>
+			. Javascript파일로 작성(.js파일)
+
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Script태그내에 작성</title>
+	<script type="text/javascript">
+	
+	
+	function over(obj) {
+		obj.src = "../imge/banana.png";
+	}
+	function out(obj) {
+		obj.src = "../imge/딸기.png";
+	}
+	
+	
+	
+	
+	
+	
+	</script>
+</head>
+<body>
+	<h3>마우스를 올려보세요</h3>
+	<hr>
+	<img alt="" src="../imge/apple.png" onmouseover="over(this)" onmouseout="over(this)">
+</body>
+</html>

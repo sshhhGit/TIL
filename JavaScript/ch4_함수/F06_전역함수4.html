@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	
+		table {border-collapse: collapse}
+		td {background: aqua;}
+	
+	</style>
+	<script type="text/javascript">
+	
+		var name = prompt("이름을 입력해주세요.","홍길동");
+		var korea = prompt("국어 성적을 입력해 주세요","");
+		var math = prompt("수학 성적을 입력해 주세요","");
+		var eng = prompt("영어 성적을 입력해 주세요","");
+		
+		total = Number(korea)+Number(math)+Number(eng);
+		avg = total/3;
+		
+		
+		//테이블
+		document.write("<table border=1 width=200 height=200");
+		document.write("<tr bgcolor='blue'><td>이름</td><td>"+name+"</td></tr>");
+		document.write("<tr><td>국어</td><td>"+korea+"</td></tr>");
+		document.write("<tr><td>수학</td><td>"+math+"</td></tr>");
+		document.write("<tr><td>영어</td><td>"+eng+"</td></tr>");
+		document.write("<tr><td>총점</td><td>"+total+"</td></tr>");
+		document.write("<tr><td>평균</td><td>"+avg.toFixed(3)+"</td></tr>");
+		
+		
+		
+		
+		
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

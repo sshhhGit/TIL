@@ -1,0 +1,39 @@
+<!-- 
+		자바스크립트에서 사용자에게 메시지를 출력이나 입력을 받을수있는
+		3가지 다이얼로그를 제공하고있다.
+		
+		1.prompt("메시지", "디폴트 입력")
+			- 사용자로부터 문자열을 입력받아서 리턴해준다.
+			- 아무런 값이 입력되지 않으면 "", 취소나 강제종료시에는 null을 리턴한다.
+			
+		2.confirm("메시지")
+			- 메시지와 확인/취소 버튼으로 구성되어 있다.
+			- 확인을 누르면 true, 취소나 강제종료시 false리턴.
+			
+		3.alert("메시지")
+			- 단순하게 전달하고 싶은 메시지를 출력해준다.
+
+
+ -->
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>프롬프트다이얼로그출력</title>
+<script type="text/javascript">
+
+	var value = prompt("이름을 입력해 주세요", "홍길동");
+	
+	if(value == null){
+		document.write("취소버튼이나 다이얼을 닫았습니다");
+	} else if(value == ""){
+		document.write("문자열 입력없이 확인을 누르셨습니다");
+	} else{
+		document.write("입력하신 문자열은 <Strong>"+value+"</Strong>입니다");
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

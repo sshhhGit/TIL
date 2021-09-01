@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var div_a = jQuery("div#a");
+/* 	console.log(div_a);
+	console.length(div_a.length); */
+	console.log("홍길동")
+	//실행한 후, F12를 눌러서 확인
+	
+	//jQuery로 선택하여 css설정
+	$('span').css('color','#f00');
+	$('#a').css('border','1px solid #00f');
+	$('#b').css('border','1px solid #f00');
+	$('[title="title"]').css('border','1px solid black');
+	$('div div span').css('background-color', 'yellow');
+	
+	//body안에 있는 모든 span태그의 글씨를 blue색으로, font는 20으로 설정하기
+	$('body').find('span').css('color', 'blue');
+	$('body').find('span').css('font-size','20pt');
+});//function()-end
+</script>
+</head>
+<body>
+  <div id="a">
+    aaa
+      <div id="b">
+        bbb
+          <p title="title1">ppp</p>
+          <span>span</span>
+          bbb-end
+      </div>
+      <span>span2</span>
+      aaa-end
+  </div>
+  <span>span3</span>
+</body>
+</html>

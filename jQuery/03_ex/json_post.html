@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		$.ajax({
+		type:'post',
+		url:'jsonTest.jsp',
+		dataType:'html',
+		success:function(data){
+			$('div').html(data)
+		}
+	});
+});//function()-end
+</script>
+</head>
+<body>
+본문내용<br>
+본문내용<br>
+본문내용<br>
+<div></div>
+본문내용<br>
+본문내용<br>
+본문내용<br>
+본문내용<br>
+
+</body>
+</html>

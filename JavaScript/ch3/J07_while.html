@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	body{
+		background-image: url("../imge/초록.png");
+	}
+	p{
+		font-size: 18px; font-style: italic; font-weight: bolder;
+	}
+
+</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><a href="#1단">1단</a></li>
+			<li><a href="#2단">2단</a></li>
+			<li><a href="#3단">3단</a></li>
+			<li><a href="#4단">4단</a></li>
+			<li><a href="#5단">5단</a></li>
+			<li><a href="#6단">6단</a></li>
+			<li><a href="#7단">7단</a></li>
+			<li><a href="#8단">8단</a></li>
+			<li><a href="#9단">9단</a></li>
+			
+		</ul>
+	</div>
+	<script type="text/javascript">
+	
+		var dan = prompt("단을 입력해 주세여>>","단");
+		var su = prompt("단을 입력해 주세여>>","단");
+		
+		var i = 1;
+		var j = 1;
+		var num = 1;
+		
+		while(i<=dan){
+			document.write("<h4><a name="+i+"단>"+i+"단"+"</a></h><hr>");
+			while(j<=su){
+				num = i*j;
+				document.write("<p>"+i+"*"+j+"="+(num)+"</p>");
+				j++
+			}
+			document.write("<br>");
+			j=1;
+			i++;
+		}
+	
+	</script>
+	
+	
+</body>
+</html>
