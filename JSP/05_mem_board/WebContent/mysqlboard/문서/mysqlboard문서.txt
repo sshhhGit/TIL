@@ -1,0 +1,86 @@
+WebContent
+  mysqlboard 폴더
+
+DB : ch20
+
+drop table board;
+
+create table board(
+  num int not null primary key auto_increment,
+  writer varchar(30) not null,
+  subject varchar(7) not null,
+  pw varchar(20) not null,
+  regdate datetime,
+  readcount int default 0,
+  ref int not null,
+  re_step int not null,
+  re_level int not null,
+  content text not null,
+  ip varchar(20) not null
+);
+
+desc board;
+--------------------------------------
+설명
+--------------------------------------
++-----------+-------------+
+| Field     | Type        |
++-----------+-------------+
+| num       | 글번호                 | 
+| writer    | 글쓴이      	  | 
+| subject   | 글제목    	      | 
+| pw        | 암호       	      |
+| regdate   | 날짜       	      |
+| readcount | 조회수   	      |
+| ref       | 답글 그룹 	  |
+| re_step   | 글순서    	      |
+| re_level  | 답글 깊이             |
+| content   | 글내용                 |
+| ip        | 아이피                 | 
++-----------+-------------+
+--------------------------------------
+MySQL : varchar, int
+Oracle : varchar2, number
+--------------------------------------
+C:\Users\TJ>sqlplus scott/tiger
+
+>drop table board;
+
+create table board(
+  num number(4) not null primary key,
+  writer varchar2(30) not null,
+  subject varchar2(7) not null,
+  pw varchar2(20) not null,
+  regdate date,
+  readcount number(4) default 0,
+  ref number(4) not null,
+  re_step number(4) not null,
+  re_level number(4) not null,
+  content varchar2(4000) not null,
+  ip varchar2(20) not null
+);
+
+//일련번호 넣기
+
+drop sequence board_seq;
+
+create sequence board_seq;
+
+--------------------------------------
+src/mysqlboard.BoardDTO.java
+src/mysqlboard.BoardDAO.java
+
+WebContent
+  mysqlboard
+    writeForm.jsp  //글쓰기, 답글쓰기
+    writePro.jsp
+
+    list.jsp       //글목록
+
+    content.jsp    //글내용 => 수정, 삭제, 답글, 삭제, 목록
+
+    updateForm.jsp //글수정
+    updatePro.jsp
+
+    deleteForm.jsp //글삭제
+    deletePro.jsp

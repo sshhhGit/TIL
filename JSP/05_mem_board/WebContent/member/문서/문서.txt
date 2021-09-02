@@ -1,0 +1,58 @@
+use ch20;
+
+drop table member;
+
+create table member(
+id varchar(20) not null primary key,
+pw varchar(20) not null,
+name varchar(30) not null,
+
+email varchar(30) not null,
+tel varchar(14) not null,
+
+zipcode varchar(10) not null,
+addr varchar(100) not null,
+addr2 varchar(30) not null,
+regdate date
+);
+
+desc member;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id      | varchar(20)  | NO   | PRI | NULL    |       |
+| pw      | varchar(20)  | NO   |     | NULL    |       |
+| name    | varchar(30)  | NO   |     | NULL    |       |
+| email   | varchar(30)  | NO   |     | NULL    |       |
+| tel     | varchar(14)  | NO   |     | NULL    |       |
+| zipcode | varchar(10)  | NO   |     | NULL    |       |
+| addr    | varchar(100) | NO   |     | NULL    |       |
+| addr2   | varchar(30)  | NO   |     | NULL    |       |
+| regdate | date         | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+
+ - 프로젝트 이름
+ 05_mem_board
+ META-INF/context.xml 		: 커넥션 풀 설정
+ WEB-INF/web.xml 			: 커넥션 풀 참조 구문 추가
+ 
+ src/member.MemberDTO.java	: 모델빈
+ src/member.MemberDAO.java	: 비지니스 로직
+ 
+ WebContent
+  member
+    confirmID.jsp
+    inputForm.jsp--수정
+    inputPro.jsp
+    
+    main.jsp
+    loginForm.jsp
+    loginPro.jsp
+    logOut.jsp
+    
+    modify.jsp
+    modify.Form.jsp			: 내정보 수정
+    modify.Pro.jsp
+    
+    deleteForm.jsp			: 회원탈퇴
+    deletePro.jsp			
