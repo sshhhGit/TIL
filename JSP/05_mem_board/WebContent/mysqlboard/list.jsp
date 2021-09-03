@@ -10,7 +10,7 @@ request.setCharacterEncoding("UTF-8");
 <%!
 //전역변수
 int pageSize = 10;
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss");
 
 %>
 
@@ -43,6 +43,7 @@ currentPage*pageSize
  List<BoardDTO> list = null;  //back-end에서 넘겨준 데이터를 받을 변수
  
  BoardDAO dao = BoardDAO.getInstance();
+ 
  count = dao.getBoardCount(); //글 갯수 받기
  
  if(count>0){ //글이 존재 할 때
@@ -128,7 +129,7 @@ table {
 			    </td>
 			    <%--글제목 끝 --%>
 			    <td><%=dto.getWriter() %></td>
-			    <td><%=dto.getRegdate() %></td>
+			    <td><%=sdf.format(dto.getRegdate()) %></td>
 			    <td><%=dto.getReadcount() %></td>
 			    <td><%=dto.getIp() %></td>
 			  </tr>

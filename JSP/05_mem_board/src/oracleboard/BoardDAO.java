@@ -1,4 +1,4 @@
-package mysqlboard;
+package oracleboard;
 
 import java.sql.*;
 
@@ -26,7 +26,7 @@ public class BoardDAO {
 	//커넥션 연결
 	private Connection getConnection() throws Exception{
 		Context ct = new InitialContext();
-		DataSource ds = (DataSource)ct.lookup("java:comp/env/jdbc/mysql");
+		DataSource ds = (DataSource)ct.lookup("java:comp/env/jdbc/oracle");
 		return ds.getConnection();
 	}
 	
@@ -76,7 +76,10 @@ public class BoardDAO {
 			}
 			
 			//글쓰기
-			sql = "insert into board(writer,subject,pw,regdate,ref,re_step,re_level,content,ip) values(?,?,?,NOW(),?,?,?,?,?)";
+			//sql = "insert into board(writer,subject,pw,regdate,ref,re_step,re_level,content,ip) values(?,?,?,NOW(),?,?,?,?,?)";
+			sql = "insert into board(num,writer,subject,pw,regdate,ref,re_step,re_level,content,ip) values(board_seq.NEXTVAL,?,?,?,sysdate,?,?,?,?,?)";
+			//MySQL : NOW() = 년월일 시분초, curdate() = 년월일 시분초, 
+			//Oracle : sysdate = 년월일 시분초	 
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -132,6 +135,60 @@ public class BoardDAO {
 	//-------------------------------
 	//리스트 글을 10개씩만 클라이어늩로 넘긴다
 	//-------------------------------
+	public List getList(int startRow, int cnt) throws Exception{
+		
+		List<BoardDTO> list = null;
+		
+		try {
+			//처리
+			con = getConnection();
+			//Oracle 서브쿼리
+			sql = "select * from(select rownum rnum,num,writer,subject,pw,regdate,readcount,ref,re_step,re_level,content,ip from(select * from board order by ref desc,re_step asc)) where rnum>=? and rnum<?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, startRow); //1
+			pstmt.setInt(2, startRow+cnt); //1+10=11
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				list = new ArrayList<BoardDTO>();
+				
+				do{
+					BoardDTO dto = new BoardDTO(); //객체생성
+					dto.setNum(rs.getInt("num"));
+					dto.setWriter(rs.getString("writer"));
+					dto.setSubject(rs.getString("subject"));
+					dto.setPw(rs.getString("pw"));
+					
+					dto.setRegdate(rs.getDate("regdate"));
+					
+					dto.setReadcount(rs.getInt("readcount"));
+					dto.setRef(rs.getInt("ref"));
+					dto.setRe_step(rs.getInt("re_step"));
+					dto.setRe_level(rs.getInt("re_level"));
+					
+					dto.setContent(rs.getString("content"));
+					dto.setIp(rs.getString("ip"));
+					
+					list.add(dto);
+					
+				}while(rs.next());
+			}
+		} catch (Exception ex1) {
+			System.out.println("getList() 예외 : " +ex1);
+		} finally{
+			try {
+				if(rs != null){rs.close();}
+				if(pstmt != null){pstmt.close();}
+				if(con != null){con.close();}
+			} catch (Exception ex2) {}
+		}//finally-end
+		return list;
+	}//getList()-end
+	
+	/*	 MySQL
 	public List getList(int startRow, int count) throws Exception{
 		
 		List<BoardDTO> list = null;
@@ -183,6 +240,7 @@ public class BoardDAO {
 		}//finally-end
 		return list;
 	}//getList()-end
+*/	
 	//-------------------------------
 	//글 내용 보기
 	//-------------------------------
