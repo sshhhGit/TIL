@@ -1,0 +1,90 @@
+쇼핑몰
+
+==============================
+간단한 쇼핑몰 사이트 구축
+==============================
+1. 기능정의
+	- 로그인
+
+	- 상품목록
+	- 상품상세보기
+	- 장바구니에 상품 담기
+	- 상품구매(주문하기)
+	- 구메목록 출력
+
+create database shopdb;
+
+use shopdb;
+
+상품정보 테이블
+drop table shop_info;
+
+create table shop_info(
+pro_no int(5) not null auto_increment,
+code varchar(20) not null,
+name varchar(50) not null,
+
+price int(5) not null,
+stock int(5),
+detail varchar(4000),
+comp varchar(30),
+
+regdate datetime,
+image varchar(50),
+primary key(pro_no)
+);
+
++---------+---------------+------+-----+---------+----------------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |설명            |
++---------+---------------+------+-----+---------+----------------+----------------+
+| pro_no  | int(5)        | NO   | PRI | NULL    | auto_increment |상품일련번호    |
+| code    | varchar(20)   | NO   |     | NULL    |                |상품코드        |
+| name    | varchar(50)   | NO   |     | NULL    |                |상품이름        |
+| price   | int(5)        | NO   |     | NULL    |                |상품가격        |
+| stock   | int(5)        | YES  |     | NULL    |                |물량(보유수량)  |
+| detail  | varchar(4000) | YES  |     | NULL    |                |상품설명        |
+| comp    | varchar(30)   | YES  |     | NULL    |                |상품제조회사    |
+| regdate | datetime      | YES  |     | NULL    |                |상품등록 날짜   |
+| image   | varchar(50)   | YES  |     | NULL    |                |상품이미지이름  |
++---------+---------------+------+-----+---------+----------------+----------------+
+
+ex)insert into shop_info(0,'코드','상품명',가격,수량,'설명','회사명','날짜','이미지.jpg');
+
+insert into shop_info values(0,'상품코드1','로체2-초콜렛',288000,5,
+'화강암이 많은 한국지형 특성에 알맞게 최적화된 캠프라인만의 특수고무로 제작된 탁월한 접지력을 자랑하는 아웃솔입니다.','캠프라인','2015-10-26','1011804_560x560.jpg');
+
+insert into shop_info values(0,'상품코드1','써니사이드2 - 옐로우', 134400,
+5,'접지력, 경량화를 개선한 신규 솔 CDR 시스템을 적용한 화려한 스타일의 고어텍스 경등산화','캠프라인',NOW(), '1011703_560x560.jpg');
+
+insert into shop_info values(0,'7AB7621','글래스캣(여성)',139000,100,'가볍고 변안한..','NEPA','2015-01-06','7AB7621_900_01.jpg');
+
+insert into shop_info values(0,'7AG7603','엣지(공용)',188300,100,'등산,드래킹 운동화','NEPA','2014-03-24','7AG7603_200_01.jpg');
+
+insert into shop_info values(0,'7AB7616','패러트로우',179000,100,'안전감이 뛰어난..','NEPA','2014-06-18','7AB7616_500_01.jpg');
+
+===========================================================================================================================================================================
+
+새 플젝 : 
+
+name : 06_shop
+
+web,xml 체크
+
+META-INF/context.xml
+WEB-INF/web.xml
+
+WebContent
+	shop
+		javascript.js
+		style.css
+
+		Top.jsp
+		Bottom.jsp
+		Index.jsp
+
+		Login.jsp
+		LoginPro.jsp
+		LogOut.jsp
+-------------------------------------------------
+src/shopdb.ProductDTO.java (모델빈 = DTO)
+src/shopdb.ProductDAO.java (비즈니스 로직 = DAO)

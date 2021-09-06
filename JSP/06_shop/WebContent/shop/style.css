@@ -1,0 +1,45 @@
+BODY {
+	FONT-SIZE: 12pt; 
+	COLOR: black; 
+	LINE-HEIGHT: 160%; 
+	FONT-FAMILY: 굴림,verdana,tahoma;
+	background-color:ivory;
+}
+H2{
+	text-align: center;
+	
+}
+TABLE{
+	margin:auto;
+	border:1px solid black;
+	background-color: #ffff99;
+	}
+
+TD {
+	 LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma
+}
+SELECT {
+	 LINE-HEIGHT: 22px; FONT-FAMILY: 굴림,verdana,tahoma
+}
+DIV {
+	LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma
+}
+FORM {
+	 LINE-HEIGHT: 160%; FONT-FAMILY: 굴림,verdana,tahoma
+}
+TEXTAREA {
+	BORDER: 1px solid #999999; 
+	FONT-SIZE: 12pt; 
+	FONT-FAMILY: 굴림,verdana; 
+	BACKGROUND-COLOR: light-gray;
+}
+INPUT {
+	BORDER: 1px solid #999999; 
+	FONT-SIZE: 12pt; 
+	FONT-FAMILY: 굴림,verdana; 
+	HEIGHT: 25px; 
+}
+
+A:link {text-decoration:none;color:#696969}
+A:hover{text-decoration:yes;color:#66CCFF}
+A:visited {text-decoration:none;color:#330066}
