@@ -18,7 +18,7 @@
           <table width="60%" align="center" border="1" bgcolor="ivory">
             <tr>
               <td>아이디</td>
-              <td><input type="text" name="memId" id="memId"></td>
+              <td><input type="text" name="userId" id="userId"></td>
             </tr>
             <tr>
               <td>패스워드</td>

@@ -21,7 +21,7 @@ drop table shop_info;
 
 create table shop_info(
 pro_no int(5) not null auto_increment,
-code varchar(20) not null,
+code varchar(20) not null unique,
 name varchar(50) not null,
 
 price int(5) not null,
@@ -35,25 +35,25 @@ primary key(pro_no)
 );
 
 +---------+---------------+------+-----+---------+----------------+----------------+
-| Field   | Type          | Null | Key | Default | Extra          |설명            |
+| Field   | Type          | Null | Key | Default | Extra          |설명            		   |
 +---------+---------------+------+-----+---------+----------------+----------------+
-| pro_no  | int(5)        | NO   | PRI | NULL    | auto_increment |상품일련번호    |
-| code    | varchar(20)   | NO   |     | NULL    |                |상품코드        |
-| name    | varchar(50)   | NO   |     | NULL    |                |상품이름        |
-| price   | int(5)        | NO   |     | NULL    |                |상품가격        |
-| stock   | int(5)        | YES  |     | NULL    |                |물량(보유수량)  |
-| detail  | varchar(4000) | YES  |     | NULL    |                |상품설명        |
-| comp    | varchar(30)   | YES  |     | NULL    |                |상품제조회사    |
-| regdate | datetime      | YES  |     | NULL    |                |상품등록 날짜   |
-| image   | varchar(50)   | YES  |     | NULL    |                |상품이미지이름  |
+| pro_no  | int(5)        | NO   | PRI | NULL    | auto_increment |상품일련번호                 |
+| code    | varchar(20)   | NO   |     | NULL    |                |상품코드      		   |
+| name    | varchar(50)   | NO   |     | NULL    |                |상품이름      		   |
+| price   | int(5)        | NO   |     | NULL    |                |상품가격    	       |
+| stock   | int(5)        | YES  |     | NULL    |                |물량(보유수량) 	   |
+| detail  | varchar(4000) | YES  |     | NULL    |                |상품설명       		   |
+| comp    | varchar(30)   | YES  |     | NULL    |                |상품제조회사                 |
+| regdate | datetime      | YES  |     | NULL    |                |상품등록 날짜                |
+| image   | varchar(50)   | YES  |     | NULL    |                |상품이미지이름              |
 +---------+---------------+------+-----+---------+----------------+----------------+
 
 ex)insert into shop_info(0,'코드','상품명',가격,수량,'설명','회사명','날짜','이미지.jpg');
 
-insert into shop_info values(0,'상품코드1','로체2-초콜렛',288000,5,
+insert into shop_info values(0,'code1','로체2-초콜렛',288000,5,
 '화강암이 많은 한국지형 특성에 알맞게 최적화된 캠프라인만의 특수고무로 제작된 탁월한 접지력을 자랑하는 아웃솔입니다.','캠프라인','2015-10-26','1011804_560x560.jpg');
 
-insert into shop_info values(0,'상품코드1','써니사이드2 - 옐로우', 134400,
+insert into shop_info values(0,'code2','써니사이드2 - 옐로우', 134400,
 5,'접지력, 경량화를 개선한 신규 솔 CDR 시스템을 적용한 화려한 스타일의 고어텍스 경등산화','캠프라인',NOW(), '1011703_560x560.jpg');
 
 insert into shop_info values(0,'7AB7621','글래스캣(여성)',139000,100,'가볍고 변안한..','NEPA','2015-01-06','7AB7621_900_01.jpg');
@@ -88,3 +88,56 @@ WebContent
 -------------------------------------------------
 src/shopdb.ProductDTO.java (모델빈 = DTO)
 src/shopdb.ProductDAO.java (비즈니스 로직 = DAO)
+
+ProductList.jsp : 목록보기
+
+shopdb.ProductDAO.java에 getDetail() 메서드 추가
+ProductDetail.jsp : 상세보기
+-------------------------------------------------
+주문 테이블 작성
+use shopdb;
+
+drop table shop_order;
+
+create table shop_order(
+ordno int(5) not null auto_increment,
+pro_no int(5) not null,
+quantity varchar(20) not null,
+orddate datetime,
+state varchar(20),
+userid varchar(30),
+primary key(ordno)
+);
+
++----------+-------------+------+-----+---------+----------------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          | 설명			  |
++----------+-------------+------+-----+---------+----------------+----------------+
+| ordno    | int(5)      | NO   | PRI | NULL    | auto_increment | 주문번호		  |
+| pro_no   | int(5)      | NO   |     | NULL    |                | 상품일련번호		  |
+| quantity | varchar(20) | NO   |     | NULL    |                | 상품수량		  |
+| orddate  | datetime    | YES  |     | NULL    |                | 주문날짜		  |
+| state    | varchar(20) | YES  |     | NULL    |                | 상태(1.접수중, 2.접수, 3.입금확인, 4.배송준비, 5.배송중, 6.배송확인
+| userid   | varchar(30) | YES  |     | NULL    |                | 회원id			  |
++----------+-------------+------+-----+---------+----------------+----------------+
+
+----------------------------------------------------------------------------------
+
+shopdb.OrderDTO.java : 모델빈
+shopdb.CartMgr.java : 장바구니
+
+ProductDAO.java에
+  getProduct(int pro_no)메서드 추가
+  
+  ProductDetail.jsp ==> CartPro.jsp
+  ==> CartList.jsp (장바구니 내용을 보여준다)
+------------------------------------------------------
+
+◆주문 처리
+shopdb.OrderDAO.java (주문처리 DAO)
+shopdb.ProductDAO.java (남은 물량 계산)
+		reduceProduct(OrderDTO dto)
+
+흐름
+CartList.jsp (장바구니)
+OrderPro.jsp (주문하기)
+OrderList.jsp(주문 목록 보기)

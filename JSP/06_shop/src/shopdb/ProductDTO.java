@@ -1,6 +1,6 @@
 package shopdb;
 
-import java.util.*;
+import java.sql.Timestamp;
 
 public class ProductDTO {
 
@@ -11,7 +11,7 @@ public class ProductDTO {
 	private int stock;		//입고물량
 	private String detail;	//설명
 	private String comp;	//회사명
-	private Date regdate;	//날짜
+	private Timestamp regdate;	//날짜
 	private String image;	//상품 이미지
 	
 	public ProductDTO() {}	//기본 생성자
@@ -73,20 +73,20 @@ public class ProductDTO {
 		this.comp = comp;
 	}
 
-	public Date getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-
 	public String getImage() {
 		return image;
 	}
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
 
 	

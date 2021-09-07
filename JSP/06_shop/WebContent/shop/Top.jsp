@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%--Top.jsp --%>
 <%
-String memId = (String)session.getAttribute("memId");
+String userId = (String)session.getAttribute("userId");
 String log = "";
 String mem = "";
 
-if(memId == null){
+if(userId == null){
 	log = "<a href='Login.jsp'>로그인</a>";
 	mem = "<a href='inputForm.jsp'>회원가입</a>";
 }else{
