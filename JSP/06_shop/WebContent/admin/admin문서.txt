@@ -1,0 +1,12 @@
+WebContent
+ admin 폴더
+   AdminLogin.jsp
+   AdminLoginPro.jsp
+   AdminLogOut.jsp
+   
+Top.jsp
+Bottom.jsp
+Index.jsp
+
+ProductList.jsp
+ProductUpdate.jsp
