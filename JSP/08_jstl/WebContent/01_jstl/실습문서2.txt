@@ -1,0 +1,12 @@
+
+
+locale
+setLocate
+requestEncoding
+msg처리
+숫자처리
+날짜처리
+
+WebContent/ 02_jstl
+ 
+ test01_locale.jsp

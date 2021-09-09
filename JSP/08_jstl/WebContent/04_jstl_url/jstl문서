@@ -1,0 +1,21 @@
+◆이전 JSP의 inclued액션 문제점
+
+- 같은 프로젝트 내에서만 include 액션을 쓸 수 있다(로컬 url만 가능)
+다른 프로젝트나 외부 사이트는 사용 할 수 없다
+
+◆JSTL의 import기느은 같은 프로젝트내에서는 물론이고, 다른 프로젝트나 외부 사이트import할 수있다 ex)네이버 다음
+
+test01_import.jsp
+
+◆URL태그
+1. redirect 태그 : respnse.sendRedirect("url")와 같은기능
+<c:redirect url="">
+  <c:param name="id" value="kim"/>
+</c:redirect>
+
+
+2. url 태그 : url을 생성해서 변수에 저장하느 기능
+
+3. import 태그 : <jsp:include>액션 태그
+
+test02_redirect.jsp

@@ -1,0 +1,20 @@
+MVC
+
+M : Model
+V : View(JSP)
+C : Controller(클라이언트 요청을 받아서 URI에 해당하는 Action을 실행하게 한다)
+
+Controller 이해하기 위해
+
+servlet에서 JSP포워딩하는 예제 컨트롤러 기능
+
+새프로젝트
+  09_servlet_JSP
+  
+   src/ServletJsp.java
+   
+   WebContent/WEB-INF/lib/
+   
+   WebContet
+     jsp
+     test.jsp
