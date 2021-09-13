@@ -1,0 +1,63 @@
+1. DB작업
+   ch20 사용
+
+--설명---
+10_MVC 실행되면
+    web.xml 의 환경 설정 첫번째로 한다
+--설명---
+
+▶새프로젝트:10_MVC
+   META-INF/context.xml
+
+▶ WEB-INf/web.xml 수정
+
+▶ 모델빈 이전 것을 사용
+   mysqlboard/BoardDTO.java 
+   mysqlboard/BoardDAO.java
+   
+===================================
+▶Action작업, 스프링에서는 컨트롤러라 한다 
+===================================
+
+1. src/command.CommandAction.java 인터페이스 
+
+2. 인터페이스를 상속 받아서
+   구현클래스를 작성한다 
+
+   1. src/action.board.ListAction.java 클래스
+   
+   2. src/action.board.WriteFormAction.java
+   3. src/action.board.WriteProAction.java
+
+   4. src/action.board.ContentAction.java
+
+   5. src/action.board.UpdateFormAction.java
+   6. src/action.board.UpdateProAction.java
+
+   7. src/action.board.DeleteFormAction.java
+   8. src/action.board.DeleteProAction.java
+
+
+3. 컨트롤러 작성
+
+   1.WEB-INF/command.propertis
+
+   2.src/controller.DispatcherController.java (컨트롤러)
+   
+   3.web.xml에 컨트롤러 등록
+
+4. WebContent/
+    WEB-INF/lib/jstl.jar, standard.jar 넣어준다 
+    
+    WebContent/imgs 복사
+    
+    WebContent/board 폴더
+    list.jsp
+    =============================
+    Action, jsp만 작업 하면 된다
+    
+    writeForm.jsp
+    writePro.jsp
+    
+            
+    

@@ -1,0 +1,19 @@
+실행순서
+------------------------------------
+클라이언트 요청 >>ControllerDispatcher(요청받는다) >>
+ 
+uri해당하는 Action를 실행
+uri=/board/list.do
+
+Action에서는 >> DAO메서드를 호출 
+   결과값 받는다<<
+   Action에서 뷰를 리턴한다 
+
+ControllerDispatcher에서 JSP로 포워딩
+------------------------------------
+
+서블릿
+HttpServletRequest  request
+HttpServletResponse response
+
+스프링,(Mybaits=DAO)

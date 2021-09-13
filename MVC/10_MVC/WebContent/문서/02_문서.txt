@@ -1,0 +1,31 @@
+WebContent/index.jsp
+
+
+1. action.board.WriteProAction.java
+2. /board/writePro.jsp
+
+3. command.properties
+/board/writePro.do=action.board.WriteProAction
+
+===글내용 보기 
+1. action.board.ContentAction
+2. /board/content.jsp
+3. command.properties
+/board/content.do=action.board.ContentAction
+
+===글수정 (데이터를 화면에 출력)
+1. action.board.UpdateFormAction
+2. /board/updateForm.jsp
+3. command.properties
+/board/updateForm.do=action.board.UpdateFormAction
+
+===글수정 (DB데이터 수정)
+1. action.board.UpdateProAction
+2. /board/updatePro.jsp
+3. command.properties
+/board/updatePro.do=action.board.UpdateProAction
+
+===글삭제
+/board/deleteForm.do=action.board.DeleteFormAction
+/board/deletePro.do=action.board.DeleteProAction
+

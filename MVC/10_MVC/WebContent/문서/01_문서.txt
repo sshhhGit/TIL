@@ -1,0 +1,71 @@
+1. DB이전 사용 
+    ch20
+
+2. 새프로젝트
+
+   12_MVC
+next
+next web.xml
+
+3. META-INF
+  comtext.xml
+
+4. WEB-INF
+  web.xml수정 
+
+모델빈 이전것 사용 
+5. BoardDTO.java
+   BoardDAO.java 복사
+
+==================
+6.src/command.CommanAction.java 인터페이스 
+
+7.src/action.board.ListAction.java
+
+7.src/action.board.WriteFormAction.java
+7.src/action.board.WriteProAction.java
+
+7.src/action.board.ContentAction.java
+
+7.src/action.board.UpdateFormAction.java
+7.src/action.board.UpdateProAction.java
+
+7.src/action.board.DeleteFormAction.java
+7.src/action.board.DeleteProAction.java
+
+8.controller
+src/controller.ControllerDispatcher.java
+
+9.WEB-INF/command.properties
+
+/board/list.do=action.board.ListAction
+
+/board/writeForm.do=action.board.WriteFormAction
+/board/writePro.do=action.board.WriteProAction
+
+/board/content.do=action.board.ContentAction
+
+/board/updateForm.do=action.board.UpdateFormAction
+/board/updatePro.do=action.board.UpdateProAction
+
+/board/deleteForm.do=action.board.DeleteFormAction
+/board/deletePro.do=action.board.DeleteProAction
+
+
+10.WEB-INF/web.xml 수정
+   컨트롤러 등록 
+   
+===================
+WebContent
+  WEB-INF/lib/jstl.jar, standard.jar  
+  imgs
+  board폴더
+    list.jsp
+    writeForm.jsp
+    writePro.jsp
+    
+    
+  module/완성
+  template/완성
+  
+  
