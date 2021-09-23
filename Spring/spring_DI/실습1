@@ -1,0 +1,12 @@
+십습1
+1. 서버단
+	인터페이스
+	src/com.spring.hello.HelloService.java
+	
+	구현클래스
+	src/com.spring.hello.HelloServiceImpl.java
+	
+2. xml/hello.xml작성(여기서 빈 등록)
+
+3. 클라이언트 작성/실행
+   com.spring.hello.HelloServiceClient
