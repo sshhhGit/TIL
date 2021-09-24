@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+<!-- pc01 빈 등록 -->
+<bean id="pc01" class="com.spring.hello2.Computer">
+  <constructor-arg value="pc01"/>
+  <property name="cpu" value="인텔셀러론1"/>
+  <property name="memory" value="8G"/>
+  <property name="disk" value="100G"/>
+</bean>
+
+<!-- pc01 빈 등록 -->
+<bean id="pc02" class="com.spring.hello2.Computer">
+  <constructor-arg value="pc02"/>
+  <property name="cpu" value="인텔셀러론2"/>
+  <property name="memory" value="16G"/>
+  <property name="disk" value="200G"/>
+</bean>
+
+<!-- pc01 빈 등록 -->
+<bean id="pc03" class="com.spring.hello2.Computer">
+  <constructor-arg value="pc03"/>
+  <property name="cpu" value="인텔셀러론3"/>
+  <property name="memory" value="32G"/>
+  <property name="disk" value="300G"/>
+</bean>
+
+<!-- Collection type 참조(list) -->
+
+<bean id="listRefBean" class="com.spring.hello3.CollectionBean">
+  <property name="itemList"><!-- setter작업 -->
+    <list>
+      <ref bean="pc01"/>
+      <ref bean="pc02"/>
+      <ref bean="pc03"/>
+      <ref bean="pc01"/>
+      <ref bean="pc02"/>
+      <ref bean="pc03"/>
+    </list>
+  </property>
+
+</bean>
+
+
+<!-- Collection type 참조(set) -->
+<bean id="setRefBean" class="com.spring.hello3.CollectionBean">
+  <property name="itemSet"><!-- setter작업 -->
+     <set>
+       <ref bean="pc01"/>
+       <ref bean="pc02"/>
+       <ref bean="pc03"/>
+       <ref bean="pc01"/>
+       <ref bean="pc02"/>
+       <ref bean="pc03"/>
+     </set>
+  </property>
+</bean>
+
+
+<!-- Collection type 참조(map) -->
+
+<bean id="mapRefBean" class="com.spring.hello3.CollectionBean">
+  <property name="itemMap"><!--setter작업-->
+    <map>
+      <entry key="pc1" value-ref="pc01"/>
+      <entry key="pc2" value-ref="pc02"/>
+      <entry key="pc3" value-ref="pc03"/>
+    </map>
+  </property>
+</bean>
+
+
+</beans>

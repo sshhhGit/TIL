@@ -1,0 +1,4 @@
+dd.driver=com.mysql.jdbc.Driver
+dd.url=jdbc:mysql://localhost:3306/mydb
+dd.user=root
+dd.pwd=12345

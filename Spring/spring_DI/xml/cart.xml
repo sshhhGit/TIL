@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
- <!-- hello.xml -->
- <!-- 빈등록  <jsp:useBean id="" class="">-->
- 
- <bean id="helloService" class="com.spring.hello.HelloServiceImpl">
-   <property name="name" value="hong-kil-dong"/>
+ <bean id="cart" class="com.spring.hello5.CartService" init-method="loadItems" destroy-method="storeItems">
+   <constructor-arg value="aaa"/>
  </bean>
  
 </beans>
