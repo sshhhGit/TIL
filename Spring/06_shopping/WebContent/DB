@@ -1,0 +1,25 @@
+create database spring;
+
+use spring;
+
+create table item(
+
+item_id int(5) auto_increment,
+item_name varchar(30),
+price int(6),
+description varchar(50),
+picture_url varchar(30),
+primary key(item_id)
+);
+
+
+c:\_bb\item.csv
+
+delete from item;
+
+load data local infile 'c:\\_bb\\item.csv'
+into table item
+fields terminated by ','
+lines terminated by '\r\n';
+
+select * from item;
