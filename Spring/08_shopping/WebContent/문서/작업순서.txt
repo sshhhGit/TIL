@@ -1,0 +1,95 @@
+데이터 유효성 체크
+
+작업순서
+========================
+DB 작업
+------------------------
+
+use spring ;
+
+drop table user_account;
+
+create table user_account(
+user_id varchar(20),
+user_name varchar(30),
+password varchar(20),
+
+postcode varchar(8),
+address varchar(50),
+email varchar(50),
+
+job varchar(30),
+birthday date,
+primary key (user_id)
+);
+
+-----------------------
+
+c:\_bb\user.csv 넣고
+
+
+mysql>load data local infile 'c:\\_bb\\user.csv'
+into table user_account
+fields terminated by ','
+lines terminated by '\r\n';
+
+
+select * from user_account;
+
+========================
+
+
+
+
+새프로젝트  Dynamic Web Project
+
+name : 08_shopping
+
+Next  Next web.xml 체크
+
+1. lib/*iar넣는다 
+
+2. web.xml에 프론트 컨트롤러 등록 
+
+   web.xml에 인코딩 설정 추가 
+
+
+3. WEB-INF/applicationContext.xml  : back-end 빈 등록 
+
+
+4. WEB-INF/shop03-servlet.xml  : 웹서버 
+
+5. src/msg.properties
+
+=====서버측 작업( back-end )
+
+src/logic.User.java (DTO)
+
+src/dao.UserDao.java 인터페이스 
+src/dao.UserDaoimpl.java 구현 클래스 (DB처리)
+
+
+src/logic.UserCatalog.java     인터페이스 
+src/logic.UserCatalogImpl.java 구현클래스 
+
+
+src/logic.Shop.java 인터페이스 
+src/logic.ShopImpl.java 구현클래스 
+
+===서버측에서 데이터 유효성 체크--내일---------------
+src/utils.LoginValidator.java
+
+
+====Controller=Action
+src/controller.LoginFormController.java
+
+
+==뷰
+
+WEB-INF/jsp/jsp-header.jsp
+WEB-INF/jsp/login.jsp
+WEB-INF/jsp/loginSuccess.jsp
+
+
+프로젝트에서 실행
+http://

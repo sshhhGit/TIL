@@ -15,7 +15,8 @@
 		
 		<!-- JDBC 접속 문자열 설정  -->
 		<property name="url">
-			<value>jdbc:mysql://localhost/spring?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8
+			<value>
+			 jdbc:mysql://localhost/spring?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8
 			</value>
 		</property>
 		
@@ -30,9 +31,9 @@
 		</property>
 		
 	</bean>
-
-
+  
 	<!-- 추가 -->
+	
 	<!-- simpleJdbcTemplate 빈 등록  -->
     <bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
        <constructor-arg>
@@ -53,13 +54,15 @@
 			<ref bean="userDao"/>
 		</property>
 	</bean>
-
-	<!-- shopService -->
-	<bean id="shopService" class="logic.ShopImpl">
-		<property name="userCatalog"><!-- setter -->
-		   <ref bean="userCatalog"/>
-		</property>
-	</bean>      
+     
+     
+    <!-- shopService -->
+	<bean id="shopService" class="logic.ShopImpl"> 
+	  <property name="userCatalog"><!-- setter -->
+	    <ref bean="userCatalog"/>
+	  </property>
+	</bean>
+	
 
 	<!-- Validator입력 데이터 유효성 체크-->
 	<!-- loginValidator 빈 등록  -->
@@ -75,5 +78,7 @@
 			</list>
 		</property>
 	</bean>
+	
+	
 </beans>
 
