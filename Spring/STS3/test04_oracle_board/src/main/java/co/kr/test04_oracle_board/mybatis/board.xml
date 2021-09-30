@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+  <select id="listDao" resultType="co.kr.test04_oracle_board.dto.BoardDTO">
+    select * from board
+    order by bGroup desc, bStep asc
+  </select>
+  
+  <!-- 글번호 얻기, 답글 그룹처리 하려고 -->
+<!--   <select id="getbId" resultType="java.lang.Integer">
+     select max(bId)
+     from board
+  </select> -->
+  
+  <!-- 글쓰기 insert-->
+  <insert id="writeDao" parameterType="co.kr.test04_oracle_board.dto.BoardDTO">
+    insert into board(bId,bName,bTitle,bContent,bHit,bGroup,bStep,bIndent)
+    values(board_seq.NEXTVAL,#{bName},#{bTitle},#{bContent},0,board_seq.CURRVAL,0,0)
+  </insert>
+  
+  <!-- 조회수 증가  -->
+  <update id="upHit">
+    update board
+    set bHit=bHit+1
+    where bId=#{bId}
+  </update>
+  
+  <!-- 글내용 보기, 수정 폼 -->
+  <select id="contentView" resultType="co.kr.test04_oracle_board.dto.BoardDTO">
+    select * from board
+    where bId=#{bId}
+  </select>
+  
+  <!-- 글삭제 -->
+  <delete id="deleteDao">
+    delete from board
+    where bId=#{bId}
+  </delete>
+  
+  <!-- DB글수정 -->
+  <update id="modyfyDao">
+    update board 
+    set bName=#{bName},bTitle=#{bTitle},bContent=#{bContent}
+    where bId=#{bId}
+  </update>
+  
+  <!-- 답글을 화면에 보여주기 위한 것 -->
+  <select id="replyView" parameterType="String" resultType="co.kr.test04_oracle_board.dto.BoardDTO">
+    select * from board
+    where bId=#{bId}
+  </select>
+  
+  <!-- 답글 위치 확보 -->
+  <update id="replyShape">
+   update board set bStep=bStep+1
+   where bGroup=#{bGroup} and bStep>#{bStep}
+  </update>
+  
+  <!-- 답글 쓰기 -->
+  <insert id="replyDao">
+    insert into board(bId,bName,bTitle,bContent,bGroup,bStep,bIndent)
+    values(board_seq.NEXTVAL,#{bName},#{bTitle},#{bContent},#{bGroup},#{bStep}+1,#{bIndent}+1)
+  </insert>
+</mapper>   
