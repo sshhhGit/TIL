@@ -16,16 +16,25 @@ Spring + MyBatis + MVC
 1. DB작업
 	
 	use BoardDB;
-
+	
 	create table myboard(
+	
 	num int(4) not null auto_increment primary key,
+	
 	writer varchar(30) not null,
+	
 	subject varchar(50) not null,
+	
 	content text not null,
+	
 	pwd varchar(15) not null,
+	
 	wdate date,
+	
 	readcount int default 0,
+	
 	ip varchar(30)
+	
 	);
 
 2, 프로젝트 생성
