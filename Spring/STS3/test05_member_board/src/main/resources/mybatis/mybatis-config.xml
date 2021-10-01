@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 	  <!-- <typeAlias alias="board77" type="model.board.BoardDto"/> -->
 	  <typeAlias alias="memberDTO" type="model.member.MemberDto"/>
+	  <typeAlias alias="boardDTO" type="model.board.BoardDto"/>
 	</typeAliases>
 
 
@@ -14,5 +15,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<!-- <mapper resource="/mybatis/board.xml"/> -->
 		<mapper resource="/mybatis/member.xml"/>
+		<mapper resource="/mybatis/board.xml"/>
 	</mappers>
 </configuration>
