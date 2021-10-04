@@ -10,10 +10,9 @@
 
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script type="text/javascript" src="/resources/js/script.js"></script>
+<script type="text/javascript" src="../resources/js/script.js"></script>
 
-<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-<link href="<c:url value:"/resourses/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
 </head>
 <body>
 
@@ -39,7 +38,7 @@
   <input type="hidden" name="re_step" value="${re_step}">
   <input type="hidden" name="re_level" value="${re_level}">
   
- <table width="60%" border="1">
+ <table border="1">
    <tr>
      <td>글쓴이</td>
      <td><input type="text" name="writer" id="writer" size="30"></td>

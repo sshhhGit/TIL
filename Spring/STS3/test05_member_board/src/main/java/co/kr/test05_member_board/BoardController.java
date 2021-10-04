@@ -84,7 +84,7 @@ public class BoardController {
 			pageNum = "1";
 		}
 		
-		int cnt = sqlSession.selectOne("board.selectCount"); //총 글객수 얻기
+		int cnt = sqlSession.selectOne("board.selectCount"); //총 글갯수 얻기
 		int curPage = Integer.parseInt(pageNum);
 		
 		PageTest pp2 = new PageTest(cnt, curPage); //페이지 처리
@@ -97,6 +97,16 @@ public class BoardController {
 		
 		List<BoardDto> list = sqlSession.selectList("board.selectListBoard", map);
 				
+		//에러처리
+		if(pp2.getEndPage()>pp2.getPageCnt()) {
+			pp2.setEndPage(pp2.getPageCnt());
+		}
+		
+		
+		int number = cnt-(curPage-1)*pp2.getPageSize();
+		
+		model.addAttribute("number", number);
+		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("pp2", pp2);
 		model.addAttribute("cnt", cnt); //총 글 갯수
 		model.addAttribute("list", list); //jsp에서 사용 할 데이터
@@ -114,7 +124,7 @@ public class BoardController {
 		
 		BoardDto bdto = sqlSession.selectOne("board.selectOneBoard", num1);
 		
-		model.addAttribute("nun", num1);
+		model.addAttribute("num", num1);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("bdto", bdto);
 		
@@ -131,6 +141,7 @@ public class BoardController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("pageNum", pageNum);
+		mv.addObject("num", num);
 		mv.addObject("bdto", bdto);
 		mv.setViewName("/board/updateForm");
 		
