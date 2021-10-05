@@ -6,16 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-h2{
-	text-align: center;
-}
-table {
-	margin: auto;
-	line-height: 30px;
-	background-color: #FFEFD5;
-}
-</style>
+
 <script type="text/javascript">
 function updateMember() {
 	document.updateForm.action="${ctxpath}/member/editForm.do";
@@ -29,7 +20,8 @@ function deleteMember() {
 </head>
 <body align="center">
 <h2>${mdto.name }님 저희 홈에 오신것을 환영합니다</h2>
-<c:set var="id" value="${mdto.id }" scope="session"/>
+<c:set var="userId" value="${mdto.id }" scope="session"/>
+<c:set var="userName" value="${mdto.name }" scope="session"/>
 
 <a href="javascript:updateMember()">[내정보 수정]</a>
 <a href="javascript:deleteMember()">[회원탈퇴]</a>

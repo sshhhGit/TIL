@@ -9,6 +9,7 @@
 </head>
 <body>
 	<!-- 세션무효화 -->
-	<c:remove var="id" scope="session" />
+	<c:remove var="userId" scope="session" />
+	<c:remove var="userName" scope="session" />
 </body>
 </html>

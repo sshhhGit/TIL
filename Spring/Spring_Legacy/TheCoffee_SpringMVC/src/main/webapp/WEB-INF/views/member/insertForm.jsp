@@ -30,18 +30,18 @@
 		var telPattern = /^\d{3}-\d{3,4}-\d{4}$/;
 		var tel = form.tel.value + "-" + form.tel2.value + "-" + form.tel3.value;
 		if(form.idDupleChecked.value == "false") {
-			alert("아이디 중복확인을 해주세요.");
+			alert("아이디 중복확인을 해주십시오");
 			return false;
 		}
 		if(form.pwCheck.value == "false") {
-			alert("비밀번호 확인을 해주세요.");
+			alert("비밀번호를 확인해주십시오");
 			return false;
 		}	
 		
-		if(!check(namePattern, name, "유효하지 않은 이름입니다. 2글자이상의 한글만 입력 가능합니다.")){
+		if(!check(namePattern, name, "유효하지 않은 이름입니다, 2글자이상의 한글만 입력가능합니다")){
 			return false;
 		}
-		if(!check(telPattern, tel, "유효하지 않은 핸드폰 번호입니다.")) {
+		if(!check(telPattern, tel, "유효하지 않은 전화번호입니다")) {
 			return false;
 		} 
 /* 		if(form.authPass.value == "false") {
@@ -49,10 +49,10 @@
 			return false;
 		} */	
 		if (sessionStorage.getItem("pwEqualCheck") == "null"){
-			alert("비밀번호 일치확인을 해 주세요.");
+			alert("비밀번호 확인을 입력해주십시오");
 			return false;
 		}
-		alert("회원가입이 성공적으로 완료되었습니다.");
+		alert("인증메일이 발송되었습니다");
 	form.submit(); 
 	
 	}
@@ -61,7 +61,7 @@
 		var form = document.signUpForm;
 		var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
 		var id = form.id.value;
-		if(!check(idPattern, id, "아이디는 4~12자의 영문 대소문자와 숫자로만 입력하세요")) {
+		if(!check(idPattern, id, "아이디는 4~12자 사이 영문 대소문자와 숫자로만 입력가능합니다")) {
 			return false;
 		}
 	}
@@ -107,11 +107,11 @@
 	
 	function pwEqualCheck(){
 		var form = document.signUpForm;
-		var passwordPattern = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,12}$/;
 		var pw = form.pw.value;
 		var pw2 = form.pw2.value;
 		
-		if(!check(passwordPattern, pw, "비밀번호는 8~15자리의 영문, 숫자, 특수문자로 조합해야 합니다.")) {
+		if(!check(passwordPattern, pw, "비밀번호는 4~12자 사이의 영문 및 숫자를 포함하여 입력가능합니다")) {
 			return false;
 		}
 		
@@ -133,7 +133,7 @@
 		var form = document.signUpForm;
 		var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var email = form.email.value;
-		if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
+		if(!check(emailPattern, email, "유효하지 않은 이메일주소입니다")) {
 			return false;
 		}
 	}

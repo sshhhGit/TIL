@@ -22,6 +22,18 @@
       where id=#{id} and pw=#{pw}
     </select>
     
+    <!-- 이메일인증 여부 체크 -->
+    <select id="authStatusCheck" parameterType="map" resultType="String">
+      select authStatus from member
+      where id=#{id} and pw=#{pw}
+    </select>
+    
+    <!-- 회원탈퇴 여부 체크 -->
+    <select id="memberDeleteCheck" parameterType="map" resultType="String">
+      select isDelete from member
+      where id=#{id} and pw=#{pw}
+    </select>
+    
     <!-- 회원정보 수정 -->
     <update id="memberUpdate" parameterType="memberDTO">
       update member
@@ -34,16 +46,16 @@
       set isDelete='Y' where id=#{id}
     </update>
     
-    <!-- authKey 업데이트 -->
+    <!-- authKey(인증번호) 업데이트 -->
     <update id="updateAuthKey" parameterType="memberDTO">
       update member 
       set authKey=#{authKey} where email=#{email}
     </update>
     
-    <!-- authStatus 업데이트 -->
+    <!-- authKey(인증번호) 비교 -->
     <update id="updateAuthStatus" parameterType="memberDTO">
       update member 
-      set authStatus=Y 
-      where authKey=#{authKey}
+      set authStatus='Y' 
+      where email=#{email} and authKey=#{authKey}
     </update>
     </mapper>

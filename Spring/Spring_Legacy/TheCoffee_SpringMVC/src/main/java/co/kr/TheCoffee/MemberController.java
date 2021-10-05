@@ -3,11 +3,17 @@ package co.kr.TheCoffee;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.ibatis.session.SqlSession;
 import model.member.MemberDto;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.TheCoffee.service.MailSendService;
@@ -79,11 +85,20 @@ public class MemberController {
 		return ".main.member.loginForm"; //뷰 리턴, loginForm.jsp
 		
 	}
-	@RequestMapping(value = "signUpConfirm.do")
-	public String insertConfirm(String authKey) {
-		sqlSession.update("member.updateAuthStatus", authKey);
-		
-		return ".main.layout";
+	@RequestMapping(value = "/insertConfirm.do", method = RequestMethod.GET)
+	 public void signUpConfirm(@RequestParam Map<String, String> map, HttpServletResponse response) throws IOException{
+	    //email, authKey 가 일치할경우 authStatus 업데이트
+	    sqlSession.update("member.updateAuthStatus", map);
+	    
+	  //이메일 인증버튼을 누르면 alert창 띄우고 메인으로
+	    response.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+	    out.println("<script>alert('이메일 인증이 완료되었습니다'); location.href='/TheCoffee/';</script>");
+	    out.flush();
+//	    mv.addObject("display", "/view/member/signUp_confirm.jsp");
+//	    mv.setViewName("/view/index");
+//	    return mv;
+	    //return ".main.layout";
 	}
 	
 	
@@ -96,17 +111,36 @@ public class MemberController {
 		
 	//로그인
 	@RequestMapping(value = "loginPro.do", method = RequestMethod.POST)
-	public String loginPro(String id, String pw, Model model) {
+	public String loginPro(String id, String pw, Model model, HttpServletResponse response) throws IOException {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("pw", pw);
 		
 		MemberDto mdto = sqlSession.selectOne("member.selectLogin", map);
+		String authStatus = sqlSession.selectOne("member.authStatusCheck", map);
+		String isDelete = sqlSession.selectOne("member.memberDeleteCheck", map);
 		
 		if(mdto==null) {
-			model.addAttribute("msg", "로그인 실패");
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('아이디가 존재하지 않거나 비밀번호가 일치하지 않습니다');</script>");
+		    out.flush();
+		    return ".main.member.loginForm";
+			//model.addAttribute("msg", "로그인 실패");
 			//return "/member/loginForm"; //뷰 리턴 loginForm.jsp
-			return ".main.member.loginForm";
+			//return ".main.member.loginForm";
+		}else if(authStatus.equals("N")) {
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('이메일 인증이 완료되지 않았습니다');</script>");
+		    out.flush();
+		    return ".main.member.loginForm";
+		}else if(isDelete.equals("Y")) {
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('탈퇴된 회원입니다');</script>");
+		    out.flush();
+		    return ".main.member.loginForm";
 		}
 		
 		//정상적으로 로그인 된 경우
@@ -127,18 +161,18 @@ public class MemberController {
 	public String editForm(String id, Model model) {
 		MemberDto mdto = sqlSession.selectOne("member.selectOne", id);
 		
-		String emailTemp = mdto.getEmail();
-		int idx = emailTemp.indexOf("@");
-		String email = emailTemp.substring(0, idx);
-		String email2 = emailTemp.substring(idx+1);
+//		String emailTemp = mdto.getEmail();
+//		int idx = emailTemp.indexOf("@");
+//		String email = emailTemp.substring(0, idx);
+//		String email2 = emailTemp.substring(idx+1);
 		
 		String telTemp = mdto.getTel();
 		String tel = telTemp.substring(0,3);
 		String tel2 = telTemp.substring(3,7);
 		String tel3 = telTemp.substring(7);
 		
-		model.addAttribute("email", email);
-		model.addAttribute("email2", email2);
+//		model.addAttribute("email", email);
+//		model.addAttribute("email2", email2);
 		model.addAttribute("tel", tel);
 		model.addAttribute("tel2", tel2);
 		model.addAttribute("tel3", tel3);

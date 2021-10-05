@@ -6,16 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-h2{
-	text-align: center;
-}
-table {
-	margin: auto;
-	line-height: 30px;
-	background-color: #FFEFD5;
-}
-</style>
 <script type="text/javascript">
   function check() {
 	  if (document.loginForm.id.value=='') {
