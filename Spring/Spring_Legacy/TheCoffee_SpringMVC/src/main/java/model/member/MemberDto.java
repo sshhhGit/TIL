@@ -15,8 +15,8 @@ public class MemberDto {
 	private String addr2;
 	private Timestamp regdate;
 	private String authKey;
-	private String isDelete;
 	private String authStatus;
+	private String isDelete;
 	
 	public MemberDto() {} //디폴트 생성자
 	

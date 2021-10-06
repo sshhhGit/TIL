@@ -67,7 +67,6 @@ $(function() {
 </script>
 </head>
 <body>
-
 <!-- 팝업레이어 시작  -->
 <div id="hd_pop">
     <h2>팝업레이어 알림</h2>

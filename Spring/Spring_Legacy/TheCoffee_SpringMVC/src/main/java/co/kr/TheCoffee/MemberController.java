@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import model.member.MemberDto;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.ModelAndView;
 
@@ -93,7 +94,7 @@ public class MemberController {
 	  //이메일 인증버튼을 누르면 alert창 띄우고 메인으로
 	    response.setContentType("text/html; charset=UTF-8");
 	    PrintWriter out = response.getWriter();
-	    out.println("<script>alert('이메일 인증이 완료되었습니다'); location.href='/TheCoffee/';</script>");
+	    out.println("<script>alert('이메일 인증이 완료되었습니다');location.href='/TheCoffee/';</script>");
 	    out.flush();
 //	    mv.addObject("display", "/view/member/signUp_confirm.jsp");
 //	    mv.setViewName("/view/index");
@@ -111,7 +112,7 @@ public class MemberController {
 		
 	//로그인
 	@RequestMapping(value = "loginPro.do", method = RequestMethod.POST)
-	public String loginPro(String id, String pw, Model model, HttpServletResponse response) throws IOException {
+	public String loginPro(String id, String pw, Model model, HttpServletResponse response, HttpSession session) throws IOException {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("pw", pw);
@@ -120,21 +121,25 @@ public class MemberController {
 		String authStatus = sqlSession.selectOne("member.authStatusCheck", map);
 		String isDelete = sqlSession.selectOne("member.memberDeleteCheck", map);
 		
+		//아이디나 비빌번호가 없거나 틀린경우
 		if(mdto==null) {
 		    response.setContentType("text/html; charset=UTF-8");
 		    PrintWriter out = response.getWriter();
-		    out.println("<script>alert('아이디가 존재하지 않거나 비밀번호가 일치하지 않습니다');</script>");
+		    out.println("<script>alert('존재하지않는 회원이거나 비밀번호가 일치하지 않습니다');</script>");
 		    out.flush();
 		    return ".main.member.loginForm";
-			//model.addAttribute("msg", "로그인 실패");
-			//return "/member/loginForm"; //뷰 리턴 loginForm.jsp
-			//return ".main.member.loginForm";
+			/*
+			 * model.addAttribute("msg", "로그인 실패"); return "/member/loginForm"; //뷰 리턴
+			 * loginForm.jsp return ".main.member.loginForm";
+			 */
+		//이메일인증을 하지않은 경우
 		}else if(authStatus.equals("N")) {
 		    response.setContentType("text/html; charset=UTF-8");
 		    PrintWriter out = response.getWriter();
 		    out.println("<script>alert('이메일 인증이 완료되지 않았습니다');</script>");
 		    out.flush();
 		    return ".main.member.loginForm";
+		//이미 탈퇴한 회원일 경우
 		}else if(isDelete.equals("Y")) {
 		    response.setContentType("text/html; charset=UTF-8");
 		    PrintWriter out = response.getWriter();
@@ -144,21 +149,36 @@ public class MemberController {
 		}
 		
 		//정상적으로 로그인 된 경우
+		String userName = mdto.getName();
+		String userId = id;
+		session.setAttribute("userName", userName);
+		session.setAttribute("userId", userId);
+		//System.out.println(userName);
+		//System.out.println(userId);
+		
 		model.addAttribute("mdto", mdto);
 		//return "/member/loginSuccess"; //뷰 리턴, loginSuccess.jsp
-		return ".main.member.loginSuccess"; //뷰 리턴, loginSuccess.jsp
+		return ".main.layout"; //뷰 리턴, loginSuccess.jsp
 	}
 		
 	//로그아웃
 	@RequestMapping("/logOut.do")
-	public String logOut() {
+	public String logOut(HttpSession session) {
 		//return "/member/logOut";
-		return ".main.member.logOut";
+		session.invalidate();
+		//return ".main.member.logOut";
+		return ".main.layout";
+	}
+	//마이메뉴
+	@RequestMapping("/myMenu.do")
+	public String myMenu() {
+		
+		return ".main.member.myMenu";
 	}
 	
 	//회원 정보 수정 폼
 	@RequestMapping(value="editForm.do", method = RequestMethod.POST)
-	public String editForm(String id, Model model) {
+	public String editForm(String id, String pw, Model model) {
 		MemberDto mdto = sqlSession.selectOne("member.selectOne", id);
 		
 //		String emailTemp = mdto.getEmail();
@@ -178,17 +198,32 @@ public class MemberController {
 		model.addAttribute("tel3", tel3);
 		model.addAttribute("mdto", mdto);
 		//return "/member/editForm";
+		
+		
 		return ".main.member.editForm";
 	}
 	
 	//DB회원 정보 수정
 	@RequestMapping(value = "/editPro.do", method = RequestMethod.POST)
-	public String editPro(@ModelAttribute("memberDto") MemberDto memberDto, HttpServletRequest request) {
+	public String editPro(@ModelAttribute("memberDto") MemberDto memberDto,String id, String pw, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
 		
-		String email = request.getParameter("email");
-		String email2 = request.getParameter("email2");
-		email=email+email2;
-		memberDto.setEmail(email);
+		MemberDto mdto = sqlSession.selectOne("member.selectOne", map);
+		
+		String userPw = request.getParameter("pw");
+		
+		if (!(mdto.getPw()).equals(userPw)) {
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('비밀번호가 일치하지 않습니다');</script>");
+		    out.flush();
+		    return ".main.member.myMenu";
+		}
+//		String email = request.getParameter("email");
+//		String email2 = request.getParameter("email2");
+//		email=email+email2;
+//		memberDto.setEmail(email);
 		
 		String tel = request.getParameter("tel");
 		String tel2 = request.getParameter("tel2");
@@ -197,16 +232,71 @@ public class MemberController {
 		memberDto.setTel(tel);
 		
 		sqlSession.update("member.memberUpdate", memberDto);
-		
+	    response.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+	    out.println("<script>alert('변경되었습니다');</script>");
+	    out.flush();
 		//return "main";
 		return ".main.layout";
 	}
 	
-	//회원탈퇴
-	@RequestMapping("deleteMember.do")
-	public String deletePro(String id) {
-		sqlSession.delete("member.memberDelete", id);
+	//비밀번호 변경 폼
+	@RequestMapping("/pwEditForm.do")
+	public String pwEditForm() {
+		return ".main.member.pwEditForm";
+	}
+	
+	//DB비밀번호 변경
+	@RequestMapping(value = "/pwEditPro.do", method = RequestMethod.POST)
+	public String pwEditPro(String id, String oldPw, String newPw, HttpServletResponse response) throws Exception {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
 		
+		MemberDto mdto = sqlSession.selectOne("member.selectOne", map);
+		
+		//String userPw = oldPw;
+		
+		if (!(mdto.getPw()).equals(oldPw)) {
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('비밀번호가 일치하지 않습니다');</script>");
+		    out.flush();
+		    return ".main.member.myMenu";
+		}
+		
+		map.put("pw", newPw);
+		sqlSession.update("member.pwUpdate", map);
+	    response.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+	    out.println("<script>alert('변경되었습니다');</script>");
+	    out.flush();
+		return ".main.layout";
+	}
+	//회원탈퇴 폼
+	@RequestMapping("/deleteForm.do")
+	public String deleteForm() {
+		return ".main.member.deleteForm";
+	}
+	
+	//회원탈퇴
+	@RequestMapping(value = "/deleteMember.do", method = RequestMethod.POST)
+	public String deletePro(String id, String pw, HttpServletResponse response, HttpSession session) throws Exception {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		
+		MemberDto mdto = sqlSession.selectOne("member.selectOne", map);
+		
+		if (!(mdto.getPw()).equals(pw)) {
+		    response.setContentType("text/html; charset=UTF-8");
+		    PrintWriter out = response.getWriter();
+		    out.println("<script>alert('비밀번호가 일치하지 않습니다');</script>");
+		    out.flush();
+		    return ".main.member.myMenu";
+		}
+		
+		sqlSession.delete("member.memberDelete", id);
+
+		session.invalidate();
 		//return "main";
 		return ".main.layout";
 	}

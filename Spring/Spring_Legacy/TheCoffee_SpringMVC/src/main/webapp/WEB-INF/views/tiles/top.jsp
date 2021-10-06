@@ -15,11 +15,13 @@
   <td width="400" rowspan="2"></td>
     <td width="400" rowspan="2" align="center"><a href="${ctxpath }"><img src="${ctxpath }/resources/imgs/top_logo3.png" border="0"></a></td>
     <td height="35" colspan="8"></td>
-    <c:if test="${empty sessionScope.userId }">
+    <%-- <c:if test="${empty sessionScope.userId }"> --%>
+    <c:if test="${empty userId }">
     <td colspan="2"></td>
     </c:if>
-    <c:if test="${!empty sessionScope.userId }">
-    <td colspan="2" valign="bottom"><div align="center" style="color:white;">${sessionScope.userName }님</div></td>
+    <%-- <c:if test="${!empty sessionScope.userId }"> --%>
+    <c:if test="${!empty userId }">
+    <td colspan="2" valign="bottom"><div align="center" style="color:white;">${userName }님</div></td>
     </c:if>
   </tr>
   <tr valign="top">
@@ -37,11 +39,11 @@
     </c:if>
     <c:if test="${!empty sessionScope.userId and 'admin' ne sessionScope.userId}">
     <td width="120"><div align="right"><a href="${ctxpath }/member/logOut.do"><img src="${ctxpath }/resources/imgs/top_logout_button.png"></a></div></td>
-    <td width="120"><div align="left"><a href="${ctxpath }/member/modify.do"><img src="${ctxpath }/resources/imgs/top_mymenu_button.png"></a></div></td>
+    <td width="120"><div align="left"><a href="${ctxpath }/member/myMenu.do"><img src="${ctxpath }/resources/imgs/top_mymenu_button.png"></a></div></td>
     </c:if>
     <c:if test="${!empty sessionScope.userId and 'admin' eq sessionScope.userId}">
     <td width="120"><div align="right"><a href="${ctxpath }/member/logOut.do"><img src="${ctxpath }/resources/imgs/top_logout_button.png"></a></div></td>
-    <td width="120"><div align="center"><a href="${ctxpath }/member/adminMenu.do"><img src="${ctxpath }/resources/imgs/top_adminmenu_button.png"></a></div></td>
+    <td width="120"><div align="center"><a href="${ctxpath }/admin/adminMenu.do"><img src="${ctxpath }/resources/imgs/top_adminmenu_button.png"></a></div></td>
     </c:if>
   </tr>
 </tbody></table>

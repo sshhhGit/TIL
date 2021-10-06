@@ -1,110 +1,125 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../module/jsp-header.jsp" %>
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
-function openDaumPostcode(){
-   new daum.Postcode({
-      oncomplete:function(data){
-         document.getElementById('zipcode').value=data.zonecode;
-         document.getElementById('addr').value=data.address;
-       }
-   }).open();
-}//openDaumPostcode()---
+  <script>
+	function openDaumPostcode(){
+		 
+		new daum.Postcode({
+			oncomplete:function(data){
+				document.getElementById('zipcode').value=data.zonecode;
+				document.getElementById('addr').value=data.address;
+	 		}
+		}).open();
+	}//openDaumPostcode()---
+  </script>
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<script type="text/javascript">
+function editCheck() {
+	var ff = eval("document.editForm");
+	
+	if(ff.pw.value==''){
+		alert("암호를 입력하세요");
+		ff.pw.focus();
+		return false;
+	}
+	if(ff.name.value==''){
+		alert("이름을 입력하세요");
+		ff.name.focus();
+		return false;
+	}
+	if(ff.email.value==''){
+		alert("이메일 입력하세요");
+		ff.email.focus();
+		return false;
+	}
+	if(ff.tel.value==''){
+		alert("전화번호를 입력하세요");
+		ff.tel.focus();
+		return false;
+	}
+	if(ff.zipcode.value==''){
+		alert("주소를 입력하세요");
+		ff.zipcode.focus();
+		return false;
+	}
+	if(ff.addr2.value==''){
+		alert("상세주소를 입력하세요");
+		ff.addr2.focus();
+		return false;
+	}
+	return true;
+}
 </script>
-<style type="text/css">
-h2{
-	text-align: center;
-}
-table {
-	margin: auto;
-	line-height: 30px;
-	padding : 3px;
-	background-color: #FFEFD5;
-}
-</style>
 </head>
 <body>
-<h2>내정보 수정</h2>
-<form action="editPro.do" method="post">
+<h2>개인정보 변경</h2>
+<form action="editPro.do" name="editForm" method="post" onsubmit="return editCheck()">
   <table border="1">
     <tr>
       <td>ID</td>
       <td>
         ${mdto.id }
-        <input type="hidden" name="id" id="id" value="${mdto.id }">
+        <input type="hidden" name="id" value="${userId }">
       </td>
     </tr>
     <tr>
       <td>암호</td>
       <td>
-        <input type="password" name="pw" id="pw" size="20">
-      </td>
-    </tr>
-    <tr>
-      <td>암호확인</td>
-      <td>
-        <input type="password" name="pw2" id="pw2" size="20">
+        <input type="password" name="pw" id="pw" size="15">
       </td>
     </tr>
     <tr>
       <td>이름</td>
       <td>
-        <input type="text" name="name" id="name" size="20" value="${mdto.name }">
+        <input type="text" name="name" size="15" value="${mdto.name }">
       </td>
     </tr>
     <tr>
       <td>이메일</td>
       <td>
-        <input type="text" name="email" id="email" value="${email }" size="20">
-        <select name="email2" id="email2">
-          <option value="@${email2 }">${email2}</option>
-          <option value="@naver.com">naver.com</option>
-          <option value="@daum.net">daum.net</option>
-          <option value="@nate.com">nate.com</option>
-        </select>
+        <input type="text" name="email" size="15" value="${mdto.email }">
       </td>
     </tr>
     <tr>
       <td>전화</td>
       <td>
-        <select name="tel" id="tel">
-          <option value="${tel }">${tel} </option>
+        <select name="tel">
+          <option value="${tel }">${tel }</option>
           <option value="010">010</option>
           <option value="018">018</option>
           <option value="017">017</option>
-          <option value="032">032</option>
         </select>
-        -
-        <input type="text" name="tel2" id="tel2" size="4" value="${tel2 }">-
-        <input type="text" name="tel3" id="tel3" size="4" value="${tel3 }">
+         -
+        <input type="text" name="tel2" value="${tel2 }"> -
+        <input type="text" name="tel3" value="${tel3 }">
       </td>
     </tr>
     <tr>
       <td>우편번호</td>
       <td>
-        <input type="text" name="zipcode" id="zipcode" size="7" value="${mdto.zipcode }" readonly="readonly">
-        <input type="button" value="주소찾기" onclick="openDaumPostcode()">
+        <input type="text" name="zipcode" id="zipcode" size="7" value="${mdto.zipcode }">
+        <input type="button" value="주소검색" onclick="openDaumPostcode()">
       </td>
     </tr>
     <tr>
       <td>주소</td>
       <td>
-        <input type="text" name="addr" id="addr" size="50" value="${mdto.addr }" readonly="readonly">
+        <input type="text" name="addr" id="addr" value="${mdto.addr }" size="60" readonly="readonly">
         <br>
-  상세주소:<input type="text" name="addr2" id="addr2" size="20" value="${mdto.addr2 }">
+        상세주소 : <input type="text" name="addr2" id="addr2" value="${mdto.addr2 }" size="20">
       </td>
     </tr>
     <tr>
       <td colspan="2" align="center">
-        <input type="submit" value="내정보 수정">
-        <input type="reset" value="다시입력">
+        <input type="submit" value="변경하기">
+        <input type="button" value="취소" onclick="location='${ctxpath}'">
       </td>
     </tr>
   </table>
