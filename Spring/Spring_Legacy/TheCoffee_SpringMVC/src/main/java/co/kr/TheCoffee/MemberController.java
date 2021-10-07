@@ -56,10 +56,10 @@ public class MemberController {
 	@RequestMapping(value = "insertPro.do", method = RequestMethod.POST)
 	public String memberInsert(@ModelAttribute("memberDto") MemberDto memberDto, HttpServletRequest request) {
 		
-		String email = request.getParameter("email");
+		//String email = request.getParameter("email");
 		//String email2 = request.getParameter("email2");
 		//email = email+email2;
-		memberDto.setEmail(email);
+		//memberDto.setEmail(email);
 		
 		String tel = request.getParameter("tel");
 		String tel2 = request.getParameter("tel2");
@@ -294,7 +294,7 @@ public class MemberController {
 		    return ".main.member.myMenu";
 		}
 		
-		sqlSession.delete("member.memberDelete", id);
+		sqlSession.update("member.memberDelete", id);
 
 		session.invalidate();
 		//return "main";

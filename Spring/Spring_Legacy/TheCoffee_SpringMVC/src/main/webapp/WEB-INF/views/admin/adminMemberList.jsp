@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../module/jsp-header.jsp" %>
+<%-- <f:parseDate var="parseRegDate" value="${ mdto.regdate }" pattern="yyyy-MM-dd HH:MM:SS" />
+<f:formatDate var="formatRegDate" value="parseRegDate" pattern="yyyy-MM-dd"/> --%>
 <%--list.jsp --%>
 
 <html>
@@ -16,7 +18,10 @@
 		<h1>관리자 권한이 필요합니다</h1>
 	</c:if>
 	<c:if test="${'admin' eq userId}">
-		<h2>회원정보 목록</h2>
+		<h2>회원정보 목록(전체회원 수:${pp2.cnt}명)</h2>
+		<form action="adminMemberSearch.do?search=">
+		아이디 : <input type="text" name="search"><input type="submit" value="검색">
+		</form><br>
 		<table border="1">
 			<tr>
 				<td>번호</td>
@@ -49,12 +54,41 @@
 					<td>${mdto.regdate}</td>
 					<td>${mdto.authStatus}</td>
 					<td>${mdto.isDelete}</td>
-					<td><input type="button" value="Y" onclick="location.href='adminMemberListPro.do?id=${mdto.id}&isDelete=${mdto.isDelete}'" ></td>
-					<td><input type="submit" value="N"></td>
+					<td><input type="button" value="Y" onclick="location.href='adminMemberListPro.do?id=${mdto.id}&isDelete=Y'" ></td>
+					<td><input type="button" value="N" onclick="location.href='adminMemberListPro.do?id=${mdto.id}&isDelete=N'"></td>
 				</tr>
 				<c:set var="num" value="${num+1}" />
 			</c:forEach>
 		</table>
+	</c:if>
+		총 회원 수 : ${pp2.cnt }
+	<br> 총 페이지 수 : ${pp2.pageCnt }
+	<br>
+	<!-- 블럭 처리 ,페이지 처리 -->
+	<c:if test="${pp2.cnt>0}">
+		<table width="700">
+			<tr>
+				<td align="center">
+					<%--       
+      <!-- 에러 방지  -->
+      <c:if test="${pp2.endPage>pp2.pageCnt}">
+       <c:set var="endPage" value="${pp2.pageCnt}"/>
+      </c:if>
+       --%> <!-- 이전블럭 --> <c:if test="${pp2.startPage>10}">
+						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${pp2.startPage-10}">
+							[이전블럭] </a>
+					</c:if> <!-- 페이지 처리 --> <c:forEach var="i" begin="${pp2.startPage}"
+						end="${pp2.endPage}">
+						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${i}"> [${i}] </a>
+					</c:forEach> <!-- 다음 블럭 --> <c:if test="${pp2.endPage<pp2.pageCnt}">
+						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${pp2.startPage+10}">
+							[다음블럭] </a>
+					</c:if>
+
+				</td>
+			</tr>
+		</table>
+
 	</c:if>
 </body>
 </html>
