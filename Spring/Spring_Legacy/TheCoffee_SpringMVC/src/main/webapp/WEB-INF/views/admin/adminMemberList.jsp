@@ -76,13 +76,13 @@
       </c:if>
        --%> <!-- 이전블럭 --> <c:if test="${pp2.startPage>10}">
 						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${pp2.startPage-10}">
-							[이전블럭] </a>
+							[이전페이지] </a>
 					</c:if> <!-- 페이지 처리 --> <c:forEach var="i" begin="${pp2.startPage}"
 						end="${pp2.endPage}">
 						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${i}"> [${i}] </a>
 					</c:forEach> <!-- 다음 블럭 --> <c:if test="${pp2.endPage<pp2.pageCnt}">
 						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${pp2.startPage+10}">
-							[다음블럭] </a>
+							[다음페이지] </a>
 					</c:if>
 
 				</td>

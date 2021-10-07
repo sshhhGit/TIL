@@ -30,17 +30,19 @@
       ${msg }
     </font>
   </c:if>
-
+<table border="1">
+<tr>
+<td>
   <form name="loginForm" method="post" action="loginPro.do" onsubmit="return check()">
-    <table border="1">
+    <table>
       <tr>
-        <td>ID</td>
+        <td>아이디</td>
         <td>
           <input type="text" name="id" id="id" size="20">
         </td>
       </tr>
       <tr>
-        <td>암호</td>
+        <td>비밀번호</td>
         <td>
           <input type="password" name="pw" id="pw" size="20">
         </td>
@@ -53,5 +55,9 @@
       </tr>
     </table>
   </form>
+  </td>
+  </tr>
+  </table>
+ 
 </body>
 </html>

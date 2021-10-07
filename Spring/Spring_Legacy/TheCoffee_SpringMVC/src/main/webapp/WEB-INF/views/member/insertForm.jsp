@@ -155,13 +155,16 @@
 </script>
 </head>
 <body>
-		<h2> 회원가입 </h2>
-		<form name="signUpForm" action="${ctxpath }/member/insertPro.do" method="post" accept-charset="UTF-8">
-		<table border="1">
+<h2><center>회원가입</center></h2>
+<table border="1">
+<tr>
+<td>
+		<form name="signUpForm" action="${ctxpath }/member/insertPro.do" method="post">
+		<table>
 			<tr>
-				<td>아이디</td>
-				<td colspan="2">
-				<input type="text" name="id" id="id"  size="15">
+				<td border="1">아이디</td>
+				<td>
+				<input type="text" name="id" id="id"  size="26">
 				<input onclick="idDupleCheck()" type="button" value="아이디 중복 확인">
 				<input type="hidden" name="idDupleChecked" id="idDupleChecked" value="false">
 				</td>
@@ -169,9 +172,9 @@
 			<tr>
 				<td rowspan="2">비밀번호</td>
 				<td rowspan="2"> 
-				<input type="password" name="pw" id="inputPwForm1" maxlength="15">
+				<input type="password" name="pw" id="inputPwForm1" size="26">
 				<br>
-				<input type="password" name="pw2" id="inputPwForm2"  size="15">
+				<input type="password" name="pw2" id="inputPwForm2"  size="26">
 				<button onclick="pwEqualCheck()" type="button" class="btnChk">비밀번호  확인</button>
 				<input type="hidden" name="pwCheck" id="pwCheck" value="false"></td>
 			</tr>			
@@ -179,23 +182,23 @@
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td colspan="2"><input type="text" name="name"></td>
+				<td><input type="text" name="name" size="26"></td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td colspan="2">
+				<td>
 					<select name="tel">
 						<option value="010" selected="selected"> 010
 						<option value="011"> 011
 						<option value="018"> 018
 					</select>
-					<input type="text" name="tel2" size="4" maxlength="4">
-					<input type="text" name="tel3" size="4" maxlength="4">
+					 - <input type="text" name="tel2" size="4" maxlength="4">
+					 - <input type="text" name="tel3" size="4" maxlength="4">
 				</td>
 			</tr>
 			<tr>
 				<td	>이메일</td>
-				<td><input type="text" name="email" id="email"  maxlength="30">
+				<td><input type="text" name="email" id="email"  size="26">
 				<!-- <button onclick="emailAuthentication()" id="eamilAuthBtn" type="button" class="btnChk">인증 메일 보내기</button></td> -->
 			</tr>
 <!-- 			<tr>
@@ -211,16 +214,20 @@
 			<tr>
 		        <td>우편번호</td>
 		        <td>
-		          <input type="text" name="zipcode" id="zipcode" size="7">
+		          <input type="text" name="zipcode" id="zipcode" size="26">
 		          <input type="button" value="주소검색" onclick="openDaumPostcode()">
 		        </td>
 		      </tr>
 		      <tr>
 		        <td>주소</td>
 		        <td>
-		          <input type="text" name="addr" id="addr" size="50" readonly="readonly">
-		          <br>
-		          상세주소 : <input type="text" name="addr2" id="addr2" size="20">
+		          <input type="text" name="addr" id="addr" size="26" readonly="readonly">
+		        </td>
+		      </tr>
+		      <tr>
+		        <td>상세주소</td>
+		        <td>
+		          <input type="text" name="addr2" id="addr2" size="26">
 		        </td>
 		      </tr>		
 				<tr>
@@ -233,5 +240,8 @@
 		      </tr>
 		      </table>
 		</form>
+		</td>
+		</tr>
+		</table>
 </body>
 </html>

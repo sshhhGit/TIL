@@ -11,12 +11,14 @@ body {
 	margin: 0px;
 }
 table {
+	border-collapse: collapse;
 	border-spacing: 0px;
+	padding: 0px;
 }
 </style>
 </head>
 <body>
-  <table border="0" height="100%" width="100%">
+  <table>
     <tr>
       <td>
         <tiles:insertAttribute name="top"/>
