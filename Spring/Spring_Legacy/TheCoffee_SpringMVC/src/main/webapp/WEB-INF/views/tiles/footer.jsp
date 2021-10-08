@@ -3,7 +3,7 @@
 <%@ include file="../module/jsp-header.jsp" %>
 <%-- bottom.jsp --%>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#363636">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#363636" height="100%">
   <tr>
     <td>
     <div align="center"><img src="${ctxpath }/resources/imgs/bottom.png"/></div>

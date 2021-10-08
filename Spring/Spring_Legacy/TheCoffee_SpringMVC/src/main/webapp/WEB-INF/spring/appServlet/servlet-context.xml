@@ -36,6 +36,9 @@
 		<beans:property name="order" value="2"/>
 	</beans:bean>
 	
+	<beans:bean id="multipartResolver"
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
 	
 	
 	<context:component-scan base-package="co.kr.TheCoffee" />

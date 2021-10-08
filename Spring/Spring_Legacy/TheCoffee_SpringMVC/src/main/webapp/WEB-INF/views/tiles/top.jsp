@@ -7,7 +7,7 @@
 </head>
 <html>
 <body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#363636">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#372923" height="100%">
     <tbody><tr>
       <td style="padding:8px 0px;">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">

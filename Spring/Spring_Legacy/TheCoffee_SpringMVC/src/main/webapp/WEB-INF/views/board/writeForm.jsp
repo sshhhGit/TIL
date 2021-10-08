@@ -10,7 +10,7 @@
 
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script type="text/javascript" src="../resources/js/script.js"></script>
+<script type="text/javascript" src="${ctxpath }/resources/js/script.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
 </head>
@@ -24,7 +24,7 @@
 <h2>답글쓰기</h2>
 </c:if>
 
- <table width="400">
+ <table width="800">
     <tr>
      <td align="right">
       <a href="${ctxpath}/board/list.do">리스트</a>
@@ -38,14 +38,14 @@
   <input type="hidden" name="re_step" value="${re_step}">
   <input type="hidden" name="re_level" value="${re_level}">
   
- <table border="1">
+ <table border="1" id="board_write_t">
    <tr>
-     <td>글쓴이</td>
+     <th>글쓴이</th>
      <td><input type="text" name="writer" id="writer" size="30"></td>
    </tr>
  
    <tr>
-     <td>글제목</td>
+     <th>글제목</th>
      <td>
       <c:if test="${num==0}">
         <input type="text" name="subject" id="subject" size="40">
@@ -58,14 +58,14 @@
    </tr>
  
    <tr>
-     <td>글내용</td>
+     <th>글내용</th>
      <td>
-     <textarea name="content" id="content" rows="10" cols="50"></textarea>
+     <textarea name="content" id="content" rows="10" cols="90"></textarea>
      </td>
    </tr>
  
    <tr>
-     <td>암호</td>
+     <th>암호</th>
      <td><input type="password" name="pw" id="pw" size="15"></td>
    </tr>
  

@@ -6,16 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script type="text/javascript">
-function updateMember() {
-	document.updateForm.action="${ctxpath}/member/editForm.do";
-	document.updateForm.submit();
-}
-function deleteMember() {
-	document.delForm.action="${ctxpath}/member/deleteMember.do";
-	document.delForm.submit();
-}
-</script> -->
+
 </head>
 <body>
   <table>

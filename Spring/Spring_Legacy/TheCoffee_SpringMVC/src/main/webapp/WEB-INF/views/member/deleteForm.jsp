@@ -6,17 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function pwCheck() {
-	if(document.delForm.pw.value==''){
-		alert("암호를 입력하세요");
-		document.delForm.pw.focus();
-		return false;
-	}
-	return true;
-}
-</script>
-<link rel="stylesheet" type="text/css" href="../static/style.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<script type="text/javascript" src="${ctxpath }/resources/js/script.js"></script>
 </head>
 <body>
 <h2>회원탈퇴</h2>

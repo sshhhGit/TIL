@@ -20,7 +20,7 @@
 	<h2>글목록(전체글:${pp2.cnt})</h2>
 	<%-- <h2>글목록(전체글:${cnt})</h2> --%>
 
-	<table widht="700">
+	<table id="board_list_t">
 		<tr>
 			<td align="right"><a href="${ctxpath}/board/writeForm.do">글쓰기</a>
 			</td>
@@ -32,8 +32,8 @@
  </c:if>
 
 	<c:if test="${pp2.cnt>0}">
-		<table widht="700" border="1">
-			<tr bgcolor="ivory">
+		<table border="1" id="board_list_t">
+			<tr>
 				<th>글번호</th>
 				<th>글제목</th>
 				<th>이름</th>

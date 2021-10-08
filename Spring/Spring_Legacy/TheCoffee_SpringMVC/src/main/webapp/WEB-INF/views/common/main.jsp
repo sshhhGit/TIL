@@ -75,7 +75,7 @@ $(function() {
 <c:if test="${empty sessionScope.userId }">
     <div id="hd_pops_13" class="hd_pops" style="top:0px;left:-205px">
         <div class="hd_pops_con" style="width:300px;height:413px">
-            <a href=""></a><a href="{ctxpath}/product/productDetail.do?pro_no=1"><img src="${ctxpath }/resources/imgs/pop1.png" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /></a>        </div>
+            <a href=""></a><a href="${ctxpath}/product/productDetail.do?pro_no=1"><img src="${ctxpath }/resources/imgs/pop1.png" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /><br style="clear:both;" /></a>        </div>
         <div class="hd_pops_footer">
             <button class="hd_pops_reject hd_pops_13 24"><strong>24</strong>시간 동안 다시 열람하지 않습니다</button>
             <button class="hd_pops_close hd_pops_13">닫기</button>
@@ -127,7 +127,7 @@ $(function() {
 <div style="width:100%; clear:both; background-color:#e3e3e3; text-align:center; padding:50px 0px; display:inline-block;">
 <table width="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td><div align="center"><a href="/bbs/content.php?co_id=FRANCHISE3"><img src="${ctxpath }/resources/imgs/line_banner.jpg" width="1200" height="300" border="0"></a></div></td>
+    <td><div align="center"><img src="${ctxpath }/resources/imgs/line_banner.jpg" width="1200" height="300" border="0"></div></td>
   </tr>
 </table>
 </div>

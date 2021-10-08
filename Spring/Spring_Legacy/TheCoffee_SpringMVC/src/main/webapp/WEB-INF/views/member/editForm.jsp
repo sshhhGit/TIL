@@ -6,57 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
-	function openDaumPostcode() {
+<script type="text/javascript" src="${ctxpath }/resources/js/script.js"></script>
 
-		new daum.Postcode({
-			oncomplete : function(data) {
-				document.getElementById('zipcode').value = data.zonecode;
-				document.getElementById('addr').value = data.address;
-			}
-		}).open();
-	}//openDaumPostcode()---
-</script>
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
 <link rel="stylesheet" type="text/css" href="../static/style.css">
-<script type="text/javascript">
-	function editCheck() {
-		var ff = eval("document.editForm");
 
-		if (ff.pw.value == '') {
-			alert("암호를 입력하세요");
-			ff.pw.focus();
-			return false;
-		}
-		if (ff.name.value == '') {
-			alert("이름을 입력하세요");
-			ff.name.focus();
-			return false;
-		}
-		if (ff.email.value == '') {
-			alert("이메일 입력하세요");
-			ff.email.focus();
-			return false;
-		}
-		if (ff.tel.value == '') {
-			alert("전화번호를 입력하세요");
-			ff.tel.focus();
-			return false;
-		}
-		if (ff.zipcode.value == '') {
-			alert("주소를 입력하세요");
-			ff.zipcode.focus();
-			return false;
-		}
-		if (ff.addr2.value == '') {
-			alert("상세주소를 입력하세요");
-			ff.addr2.focus();
-			return false;
-		}
-		return true;
-	}
-</script>
 </head>
 <body>
 	<h2>개인정보 변경</h2>

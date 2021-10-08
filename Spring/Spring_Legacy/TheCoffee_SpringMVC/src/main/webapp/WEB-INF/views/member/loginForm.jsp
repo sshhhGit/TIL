@@ -6,21 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-  function check() {
-	  if (document.loginForm.id.value=='') {
-		  alert("ID를 입력하세요");
-		  document.loginForm.id.focus();
-		  return false;
-	}
-	  if (document.loginForm.pw.value=='') {
-		  alert("암호를 입력하세요");
-		  document.loginForm.pw.focus();
-		  return false;
-	}
-	return true;
-}
-</script>
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<script type="text/javascript" src="${ctxpath }/resources/js/script.js"></script>
 </head>
 <body>
 <h2>로그인</h2>
@@ -30,10 +17,10 @@
       ${msg }
     </font>
   </c:if>
-<table border="1">
+<table border="1" id="admin_login">
 <tr>
 <td>
-  <form name="loginForm" method="post" action="loginPro.do" onsubmit="return check()">
+  <form name="loginForm" method="post" action="loginPro.do" onsubmit="return loginCheck()">
     <table>
       <tr>
         <td>아이디</td>

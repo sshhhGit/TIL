@@ -6,42 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function oldPwCheck() {
-	var ff = eval("document.pwEditForm");
-	
-	if(ff.oldPw.value==''){
-		alert("기존 비밀번호를 입력하세요");
-		ff.oldPw.focus();
-		return false;
-	}
-	if(ff.newPw.value==''){
-		alert("새 비밀번호를 입력하세요");
-		ff.newPw.focus();
-		return false;
-	}
-	if(ff.newPw2.value==''){
-		alert("새 비밀번호 확인을 입력하세요");
-		ff.newPw2.focus();
-		return false;
-	}
-	if(ff.oldPw.value==ff.newPw.value){
-		alert("기존 비밀번호와 다른 비밀번호를 입력하세요");
-		ff.oldPw.value="";
-		ff.newPw.value="";
-		ff.newPw.focus();
-		return false;
-	}
-	if(ff.newPw.value!=ff.newPw2.value){
-		alert("새 비밀번호 확인이 일치하지않습니다");
-		ff.newPw.value="";
-		ff.newPw2.value="";
-		ff.newPw.focus();
-		return false;
-	}
-	return true;
-}
-</script>
+<script type="text/javascript" src="${ctxpath }/resources/js/script.js"></script>
+
 </head>
 <body>
 	<h2>비밀번호 변경</h2>

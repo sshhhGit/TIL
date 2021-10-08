@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h2>글내용 보기</h2>
-	<table border="1">
+	<table border="1" id="board_content_t">
 		<tr>
 			<th>글번호</th>
 			<td>${bdto.num}</td>
