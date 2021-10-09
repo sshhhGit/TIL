@@ -20,7 +20,7 @@
 		<h1>관리자 권한이 필요합니다</h1>
 	</c:if>
 	<c:if test="${'admin' eq userId}">
-		<h2>회원정보 목록(전체회원 수:${pp2.cnt}명)</h2>
+		<h2>회원정보 목록</h2>
 		<form action="adminMemberSearch.do?search=">
 		아이디 : <input type="text" name="search"><input type="submit" value="검색">
 		</form><br>
@@ -64,7 +64,7 @@
 		</table>
 	
 		총 회원 수 : ${pp2.cnt }
-	<br> 총 페이지 수 : ${pp2.pageCnt }
+	<%-- <br> 총 페이지 수 : ${pp2.pageCnt } --%>
 	<br>
 	<!-- 블럭 처리 ,페이지 처리 -->
 	<c:if test="${pp2.cnt>0}">
@@ -78,13 +78,13 @@
       </c:if>
        --%> <!-- 이전블럭 --> <c:if test="${pp2.startPage>10}">
 						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${pp2.startPage-10}">
-							[이전페이지] </a>
+							＜ </a>
 					</c:if> <!-- 페이지 처리 --> <c:forEach var="i" begin="${pp2.startPage}"
 						end="${pp2.endPage}">
 						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${i}"> [${i}] </a>
 					</c:forEach> <!-- 다음 블럭 --> <c:if test="${pp2.endPage<pp2.pageCnt}">
 						<a href="${ctxpath}/admin/adminMemberList.do?pageNum=${pp2.startPage+10}">
-							[다음페이지] </a>
+							＞ </a>
 					</c:if>
 
 				</td>

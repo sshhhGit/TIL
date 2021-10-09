@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 //모델빈
 public class MemberDto {
 	
+	private int num;
 	private String id;
 	private String pw;
 	private String name;
@@ -20,6 +21,14 @@ public class MemberDto {
 	
 	public MemberDto() {} //디폴트 생성자
 	
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	public String getAuthKey() {
 		return authKey;
 	}

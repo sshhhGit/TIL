@@ -17,18 +17,17 @@
 
 </head>
 <body>
-<table align="center">
-	<td>
-		<font size="+3">
-			<strong>FAQ</strong><font size="+1">&nbsp;(전체글: ${pp2.cnt}) </font>
-		</font>
-	</td>
-</table>
+	<br>
+	<h2>FAQ</h2>
+	<%-- <h2>글목록(전체글:${cnt})</h2> --%>
+	<br>
+	<table id="board_list_t">
+		<tr>
+			<td style="text-align: right;"><a href="${ctxpath}/faq/writeForm.do">글쓰기</a>
+			</td>
+		</tr>
+	</table>
 
-<table>
-	<td align="right"><a href="${ctxpath}/faq/writeForm.do">글쓰기</a>
-	</td>
-</table>
 
 	<c:if test="${pp2.cnt==0}">
 		게시판에 저장된글이 없습니다
@@ -53,10 +52,10 @@
 					</td>
  					
  					<!-- 분류 -->
- 					<td width="140" align="center">${fdto.faq_category}</td>
+ 					<td width="180" align="center">${fdto.faq_category}</td>
  					
 					<!-- 글제목 -->
-					<td width="800">
+					<td width="750">
 						<!-- 제목을 클릭하면 글내용로 가기  -->
 						<!-- content.do -->
 						<a href="${ctxpath}/faq/content.do?faq_no=${fdto.faq_no}&pageNum=${pageNum}">
@@ -74,6 +73,7 @@
 			</c:forEach>
 		</table>
 	</c:if>
+	<br>
 	<!-- 블럭 처리 ,페이지 처리 -->
 	<c:if test="${pp2.cnt>0}">
 		<table width="700">
@@ -82,13 +82,13 @@
 					<!-- 이전블럭 -->
 					<c:if test="${pp2.startPage>10}">
 						<a href="${ctxpath}/faq/list.do?pageNum=${pp2.startPage-10}">
-							[이전블럭] </a>
+							＜ </a>
 					</c:if> <!-- 페이지 처리 --> <c:forEach var="i" begin="${pp2.startPage}"
 						end="${pp2.endPage}">
 						<a href="${ctxpath}/faq/list.do?pageNum=${i}"> [${i}] </a>
 					</c:forEach> <!-- 다음 블럭 --> <c:if test="${pp2.endPage<pp2.pageCnt}">
 						<a href="${ctxpath}/faq/list.do?pageNum=${pp2.startPage+10}">
-							[다음블럭] </a>
+							＞ </a>
 					</c:if>
 
 				</td>

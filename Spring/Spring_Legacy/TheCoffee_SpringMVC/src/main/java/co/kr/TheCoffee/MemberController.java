@@ -76,7 +76,7 @@ public class MemberController {
         Map<String, String> map = new HashMap<String, String>();
         map.put("email", memberDto.getEmail());
         map.put("authKey", memberDto.getAuthKey());
-        System.out.println(map);
+        //System.out.println(map);
 
         //DB에 authKey 업데이트
         sqlSession.update("member.updateAuthKey", map);

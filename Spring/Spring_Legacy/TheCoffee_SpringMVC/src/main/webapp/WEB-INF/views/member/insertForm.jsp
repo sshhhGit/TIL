@@ -14,7 +14,7 @@
 <h2><center>회원가입</center></h2>
 <table border="1" id="member_insert_t">
 <tr>
-<td>
+<td align="center">
 		<form name="signUpForm" action="${ctxpath }/member/insertPro.do" method="post">
 		<table>
 			<tr>

@@ -74,7 +74,7 @@ function pwCheck() {
 			return false;
 		}	
 		
-		if(!check(namePattern, name, "유효하지 않은 이름입니다, 2글자이상의 한글만 입력가능합니다")){
+		if(!check(namePattern, name, "2글자이상의 한글만 입력가능합니다")){
 			return false;
 		}
 		if(!check(telPattern, tel, "유효하지 않은 전화번호입니다")) {
@@ -97,7 +97,7 @@ function pwCheck() {
 		var form = document.signUpForm;
 		var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
 		var id = form.id.value;
-		if(!check(idPattern, id, "아이디는 4~12자 사이 영문 대소문자와 숫자로만 입력가능합니다")) {
+		if(!check(idPattern, id, "4~12자 사이의 영문 대소문자와 숫자로만 입력가능합니다")) {
 			return false;
 		}
 	}
@@ -147,7 +147,7 @@ function pwCheck() {
 		var pw = form.pw.value;
 		var pw2 = form.pw2.value;
 		
-		if(!check(passwordPattern, pw, "비밀번호는 4~12자 사이의 영문 및 숫자를 포함하여 입력가능합니다")) {
+		if(!check(passwordPattern, pw, "4~12자 사이의 영문 및 숫자를 포함하여야합니다")) {
 			return false;
 		}
 		

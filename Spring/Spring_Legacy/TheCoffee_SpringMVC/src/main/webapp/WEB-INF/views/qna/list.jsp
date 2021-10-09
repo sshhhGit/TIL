@@ -26,7 +26,7 @@ if (receivedSearch == null || receivedSearch == "") {
 %>
 
 <br>
- <h2>Q&A</h2><c:if test="${count!=null and count!=0}">총 ${count}개의 글</c:if>
+ <h2>Q&A</h2><c:if test="${count!=null and count!=0}"><%-- 총 ${count}개의 글 --%></c:if>
  
  <table id="qna_list_t">
 <%--    <tr>
@@ -99,7 +99,7 @@ if (receivedSearch == null || receivedSearch == "") {
      </c:forEach>
    </table>
  </c:if>
- <br><br>
+<br>
  
 
 
@@ -107,6 +107,7 @@ if (receivedSearch == null || receivedSearch == "") {
 <%-- 페이지처리, 블럭처리 --%>
 <form name="searchForm" action="${ctxpath}/qna/list.do">
 <table align="center">
+
   <tr>
     <td align="center">
       <c:if test="${count>0}">
@@ -133,7 +134,7 @@ if (receivedSearch == null || receivedSearch == "") {
       </c:if>
     </td>
   </tr>
-  
+
   <tr>
     <td align="center">
       <c:if test="${count!=0}">
@@ -141,8 +142,7 @@ if (receivedSearch == null || receivedSearch == "") {
       </c:if>
     </td>
   </tr>
-  
-  <tr>
+      <tr>
     <td align="center">
       <br>
         <c:if test="${count>0}">
@@ -152,9 +152,10 @@ if (receivedSearch == null || receivedSearch == "") {
         </c:if>
     </td>
   </tr>
+
 </table>
 </form>
-<br><br><br>
+<br>
  
 </body>
 </html>
