@@ -4,6 +4,7 @@
 <%--top.jsp --%>
 <head>
 <!-- <link rel="stylesheet" type="text/css" href="../static/style.css"> -->
+<link rel="shortcut icon" type="image/x-icon" href="{ctxpath }/resources/imgs/Coffee.ico">
 </head>
 <html>
 <body>

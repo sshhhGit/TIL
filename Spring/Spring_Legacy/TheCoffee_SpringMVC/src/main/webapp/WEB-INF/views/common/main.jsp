@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TheCoffee</title>
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="${ctxpath }/resources/js/script.js"></script>
 <!-- 팝업레이어 시작 CSS 시작 -->
 <style type="text/css">
 #hd_pop {z-index:1000;position:relative;margin:0 auto;width:970px;height:0}
@@ -167,7 +167,7 @@ $(function() {
 
 <table width="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td bgcolor="#3B2518"><div align="center"><a href="/bbs/content.php?co_id=FRANCHISE1"><img src="${ctxpath }/resources/imgs/slide_interior.jpg" width="1200" height="700" border="0"></a></div></td>
+    <td bgcolor="#3B2518"><div align="center"><img src="${ctxpath }/resources/imgs/slide_interior.jpg" width="1200" height="700" border="0"></div></td>
   </tr>
 </table>
 
