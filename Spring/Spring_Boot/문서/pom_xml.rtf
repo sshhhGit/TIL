@@ -1,0 +1,127 @@
+{\rtf1\ansi\ansicpg949\deff0\nouicompat\deflang1033\deflangfe1042{\fonttbl{\f0\fmodern\fprq2\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}{\f1\fmodern\fprq1\fcharset0 Consolas;}{\f2\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}}
+{\colortbl ;\red0\green128\blue128;\red0\green0\blue0;\red63\green127\blue127;\red255\green255\blue0;\red63\green95\blue191;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\nowidctlpar\f0\fs40\'a1\'e1pom.xml\par
+\cf1\f1\fs22  \cf0\fs44\par
+\cf2\tab\fs22\tab\cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 groupId\cf1 >\cf2 org.springframework.boot\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 artifactId\cf1 >\cf2 spring-boot-starter-\highlight4 web\cf1\highlight0 </\cf3 artifactId\cf1 >\cf0\par
+\cf2\tab\tab\cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\cf0\par
+\cf2\tab\tab\cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 groupId\cf1 >\cf2 org.springframework.boot\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 artifactId\cf1 >\cf2 spring-boot-starter-\highlight4 tomcat\cf1\highlight0 </\cf3 artifactId\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 scope\cf1 >\cf2\highlight4 provided\cf1\highlight0 </\cf3 scope\cf1 >\cf0\par
+\cf2\tab\tab\cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\cf0\par
+\cf2\tab\tab\cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 groupId\cf1 >\cf2 org.springframework.boot\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 artifactId\cf1 >\cf2 spring-boot-starter-\highlight4 test\cf1\highlight0 </\cf3 artifactId\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 scope\cf1 >\cf2\highlight4 test\cf1\highlight0 </\cf3 scope\cf1 >\cf0\par
+\cf2\tab\tab\cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\cf0\par
+\cf2\tab\tab\cf5 <!-- \f0\'c5\'e8\'c4\'b9\'c6\'c4\'bc\'ad\f1  -->\cf0\par
+\cf2        \cf1 <\cf3 dependency\cf1 >\cf2  \cf0\par
+\cf2             \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat.embed\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-embed-jasper\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2  \tab\tab\tab\cf1 <\cf3 scope\cf1 >\cf2 provided\cf1 </\cf3 scope\cf1 >\cf0\par
+\cf2         \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf0\par
+\cf2         \cf5 <!-- \ul jstl\ulnone  \f0\'b6\'f3\'c0\'cc\'ba\'ea\'b7\'af\'b8\'ae\f1  -->\cf0\par
+\cf2\tab\tab\cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab     \cf1 <\cf3 groupId\cf1 >\cf2 javax.servlet\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2\tab\tab     \cf1 <\cf3 artifactId\cf1 >\cf2 jstl\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2\tab\tab\cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\cf0\par
+\cf2\tab\tab\cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 groupId\cf1 >\cf2 org.springframework.boot\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2\tab\tab\tab\cf1 <\cf3 artifactId\cf1 >\cf2 spring-boot-devtools\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2\tab\tab\cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2\tab\tab\cf0\par
+\cf2        \cf5 <!-- \ul tomcat\ulnone  -->\cf0\par
+\cf2       \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-annotations-api\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 version\cf1 >\cf2 $\{tomcat.version\}\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2       \cf1 </\cf3 dependency\cf1 >\cf0\par
+\par
+\cf2       \cf5 <!-- \ul tomcat\ulnone -\ul jdb\ulnone  -->\cf0\par
+\cf2       \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-jdbc\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 version\cf1 >\cf2 $\{tomcat.version\}\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2       \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2       \cf0\par
+\cf2       \cf5 <!--\ul tomcat\ulnone -\ul jsp\ulnone -\ul api\ulnone -->\cf0\par
+\cf2       \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-jsp-api\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 version\cf1 >\cf2 $\{tomcat.version\}\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2       \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2       \cf0\par
+\cf2       \cf5 <!--\ul tomcat\ulnone -embed-core-->\cf0\par
+\cf2       \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat.embed\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-embed-core\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 version\cf1 >\cf2 $\{tomcat.version\}\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2       \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2       \cf0\par
+\cf2       \cf5 <!--\ul tomcat\ulnone -embed-el-->\cf0\par
+\cf2       \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat.embed\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-embed-el\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 version\cf1 >\cf2 $\{tomcat.version\}\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2       \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2      \cf0\par
+\cf2      \cf5 <!-- \ul tomcat\ulnone -embed-\ul jasper\ulnone  -->\cf0\par
+\cf2        \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 groupId\cf1 >\cf2 org.apache.tomcat.embed\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 artifactId\cf1 >\cf2 tomcat-embed-jasper\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2         \cf1 <\cf3 version\cf1 >\cf2 $\{tomcat.version\}\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2       \cf1 </\cf3 dependency\cf1 >\cf2  \cf0\par
+\cf2       \cf0\par
+\cf2       \cf5 <!--javax.servlet.jsp.jstl-\ul api\ulnone -->\cf0\par
+\cf2        \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2            \cf1 <\cf3 groupId\cf1 >\cf2 javax.servlet.jsp.jstl\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2            \cf1 <\cf3 artifactId\cf1 >\cf2 javax.servlet.jsp.jstl-api\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2            \cf1 <\cf3 version\cf1 >\cf2 1.2.1\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2        \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2         \cf0\par
+\cf2        \cf5 <!--JDBC -->\cf0\par
+\cf2        \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2            \cf1 <\cf3 groupId\cf1 >\cf2 org.springframework.boot\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2            \cf1 <\cf3 artifactId\cf1 >\cf2 spring-boot-starter-jdbc\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2            \cf1 <\cf3 version\cf1 >\cf2 1.4.1.RELEASE\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2        \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2                 \cf0\par
+\cf2         \cf5 <!-- MYSQL -->\cf0\par
+\cf2         \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 groupId\cf1 >\cf2 mysql\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 artifactId\cf1 >\cf2 mysql-connector-java\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 version\cf1 >\cf2 5.1.6\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2         \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2  \cf0\par
+\cf2         \cf5 <!--MyBatis -->\cf0\par
+\cf2         \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 groupId\cf1 >\cf2 org.mybatis.spring.boot\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 artifactId\cf1 >\cf2 mybatis-spring-boot-starter\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 version\cf1 >\cf2 1.1.1\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2         \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2  \cf0\par
+\cf2         \cf5 <!-- \ul mybatis\ulnone -spring -->\cf2                 \cf0\par
+\cf2         \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 groupId\cf1 >\cf2 org.mybatis\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 artifactId\cf1 >\cf2 mybatis-spring\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 version\cf1 >\cf2 1.3.0\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2         \cf1 </\cf3 dependency\cf1 >\cf0\par
+\cf2                 \cf0\par
+\cf2         \cf5 <!-- \ul mybatis\ulnone  -->\cf0\par
+\cf2         \cf1 <\cf3 dependency\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 groupId\cf1 >\cf2 org.mybatis\cf1 </\cf3 groupId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 artifactId\cf1 >\cf2 mybatis\cf1 </\cf3 artifactId\cf1 >\cf0\par
+\cf2             \cf1 <\cf3 version\cf1 >\cf2 3.4.2\cf1 </\cf3 version\cf1 >\cf0\par
+\cf2         \cf1 </\cf3 dependency\cf1 >\par
+
+\pard\sa200\sl276\slmult1\cf0\f2\fs20\lang18\par
+}
+ 

@@ -1,0 +1,37 @@
+DB : ch20
+table : board
+
+
+  num       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| writer    | varchar(30) | NO   |     | NULL    |                |
+| subject   | varchar(70) | NO   |     | NULL    |                |
+| pw        | varchar(20) | NO   |     | NULL    |                |
+| regdate   | datetime    | YES  |     | NULL    |                |
+| readcount | int(11)     | YES  |     | 0       |                |
+| ref       | int(11)     | NO   |     | NULL    |                |
+| re_step   | int(11)     | NO   |     | NULL    |                |
+| re_level  | int(11)     | NO   |     | NULL    |                |
+| content   | text        | NO   |     | NULL    |                |
+| ip
+
+ 
+
+새프로젝트 
+ name : board
+
+pom.xml (라이브러리 넣기 )
+
+
+현재 package .dto.BatodDto.java
+
+com.example.board.mapper.BoardMapper.java 인터페이스  
+com.example.board.mapper.BoardMapper.xml (DB작업) 
+
+
+클라이언트 
+src/main/webapp
+             
+           WEB-INF
+              views
+                 board / *.jsp
+                 member/ *.jsp
