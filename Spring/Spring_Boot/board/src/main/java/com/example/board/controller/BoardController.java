@@ -133,4 +133,23 @@ public class BoardController {
 			
 			return mv;
 		}
+		
+		//DB글 수정
+		@RequestMapping(value = "updatePro.do", method = RequestMethod.POST)
+		public ModelAndView updatePro(BoardDto boardDto, String pageNum) throws Exception{
+			boardService.updateDao(boardDto); //글수정
+			
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("pageNum", pageNum);
+			mv.setViewName("redirect:/board/list.do");
+			return mv;
+		}
+		
+		//DB글 삭제
+		@RequestMapping("/delete.do")
+		public String deletePro(Model model, String num, String pageNum) throws Exception{
+			boardService.deleteDao(Integer.parseInt(num));
+			model.addAttribute("pageNum", pageNum);
+			return "redirect:/board/list.do";
+		}
 }

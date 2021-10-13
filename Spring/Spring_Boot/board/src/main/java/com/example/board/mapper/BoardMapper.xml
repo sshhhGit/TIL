@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 글쓰기, 답글쓰기 -->
 	<insert id="insertDao" parameterType="com.example.board.dto.BoardDto">
 	  insert into board(writer,subject,pw,regdate,ref,re_step,re_level,content,ip)
-	  values(#{writer),#{subject},#{pw},NOW(),#{ref},#{re_step},#{re_level},#{content},#{ip})
+	  values(#{writer},#{subject},#{pw},NOW(),#{ref},#{re_step},#{re_level},#{content},#{ip})
 	</insert>
 	
 	<!-- 글갯수 얻기 -->
