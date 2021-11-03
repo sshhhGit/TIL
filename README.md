@@ -7,3 +7,4 @@
 - 웹표준 기술 : HTML, CSS, Javascript, jQuery
 - 프레임워크 : Spring, sts, Spring boot, MyBatis(OMR)
 - 앱 개발 기술 : Android, jQuery, javaScript, Ajax
+- 데이터베이스 : MySQL, Oracle
